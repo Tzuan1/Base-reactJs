@@ -1,0 +1,369 @@
+@import "../../../../global.scss";
+
+.headerPage {
+    .headerCalendar {
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        width: 100%;
+        z-index: $zindex_headerCalendar;
+        background: #ffffff;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+
+        .headerLeft {
+            width: 15%;
+            padding: 10px;
+
+            img {
+                cursor: pointer;
+                width: 20%;
+            }
+        }
+
+        .headerCenter {
+            width: 50%;
+
+            ul {
+                width: 100%;
+                height: 100%;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                li {
+                    height: 26px;
+
+                    img {
+                        margin-right: 5px;
+                        width: 30px;
+                    }
+
+                    margin: 0;
+                    display: flex;
+                    align-items: center;
+                    font-size: 18px;
+                    line-height: 21px;
+                    font-weight: bold;
+                    cursor: pointer;
+
+                    a {
+                        color: #000333;
+                    }
+                }
+            }
+        }
+
+        .headerRight {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+
+            :global {
+                .ant-dropdown-trigger {
+                    background-color: #5585ce;
+                    border-radius: 6px;
+                    padding: 5px 10px;
+                    color: #fff;
+                    height: 34px;
+
+                    span {
+                        margin-left: 5px;
+                    }
+                }
+            }
+
+            div {
+                display: none;
+            }
+
+            :global {
+                .btnCloseMenu {
+                    display: none;
+                    border: none !important;
+
+                    p {
+                        margin-bottom: 0 !important;
+                    }
+
+                    img {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    .menuRight {
+        display: none;
+    }
+
+    .menuRightActive {
+        display: none;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        .headerCalendar {
+            width: 100%;
+
+            .headerCenter {
+                width: 60%;
+            }
+            .headerLeft {
+                img {
+                    width: 30%;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $screenResponse) {
+        .headerCalendar {
+            .headerCenter {
+                display: none;
+            }
+
+            .headerLeft {
+                width: 15%;
+                padding: 7px 10px;
+
+                img {
+                    width: 50% !important;
+                }
+            }
+
+            .headerRight {
+                :global {
+                    .btnCloseMenu {
+                        display: block;
+                    }
+                }
+
+                div {
+                    display: block;
+
+                    :global {
+                        .ant-btn {
+                            border: none !important;
+
+                            .anticon {
+                                color: #5585ce;
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+
+                :global {
+                    .ant-dropdown-trigger {
+                        &:nth-child(1) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .headerLeft {
+            img {
+                width: 30%;
+            }
+        }
+
+        .menuRight {
+            top: 0;
+            right: -999px;
+            transition: right 2s;
+            width: 100%;
+            height: 100%;
+            z-index: $zindex_menuRight;
+            background: #fcfcfc;
+            position: fixed;
+            display: unset;
+            overflow: auto;
+
+            :global {
+                .btnCloseMenu {
+                    padding: 30px 0 !important;
+                    margin: 0 60px;
+                }
+            }
+
+            :global {
+                .btnCloseMenu {
+                    border: none !important;
+
+                    p {
+                        margin-bottom: 0 !important;
+                    }
+
+                    img {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .menuRightActive {
+            right: 0;
+            transition: right 1s;
+
+            :global {
+                .btnCloseMenu {
+                    img {
+                        &:hover {
+                            transform: rotate(180deg);
+                            transition: 0.3s ease-in-out;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .headerCalendar {
+            .headerLeft {
+                width: 25%;
+            }
+        }
+    }
+}
+
+.dropdownMenu {
+    background-color: #fcfcfc !important;
+    border-radius: 6px !important;
+    padding: 15px !important;
+
+    li {
+        font-weight: bold;
+        padding: 10px 50px;
+        color: #000333;
+        margin: 10px 0;
+        border-radius: 5px;
+    }
+
+    li:nth-child(1) {
+        padding: 0;
+        margin-bottom: 0 !important;
+        height: auto !important;
+
+        &:hover {
+            background-color: #fcfcfc !important;
+            cursor: default;
+        }
+    }
+
+    li:nth-child(2) {
+        background-color: silver;
+        border: 1px solid #e5e4e4;
+        padding: 0;
+        margin: 10px 0;
+    }
+
+    li:nth-child(3) {
+        background-color: #1fe26d;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+
+        a {
+            color: #fff;
+        }
+
+        &:hover {
+            background-color: #1ebe5e;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+        }
+    }
+
+    li:nth-child(4) {
+        background-color: #ffba0a;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+
+        a {
+            color: #fff;
+        }
+
+        &:hover {
+            background-color: #c48e07;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+        }
+    }
+
+    li:nth-child(5) {
+        background-color: rgb(85, 133, 206);
+        border-radius: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+
+        a {
+            color: #fff;
+        }
+
+        &:hover {
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+        }
+    }
+
+    li:nth-child(6) {
+        background-color: #f02941;
+        border-radius: 5px;
+        text-align: center;
+
+        a {
+            color: #fff;
+        }
+
+        &:hover {
+            background-color: #c22336;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+        }
+    }
+
+    @media only screen and (max-width: $screenResponse) {
+        height: auto;
+        width: 100%;
+        box-shadow: none !important;
+        padding: 0 60px 20px !important;
+        border-radius: 0 !important;
+
+        li {
+            margin-bottom: 20px !important;
+            height: 50px !important;
+            line-height: 50px !important;
+        }
+
+        li:nth-child(1) {
+            margin-bottom: 25px !important;
+            height: auto !important;
+
+            span {
+                border: 1px solid #3c9bd6;
+                border-radius: 6px;
+                text-align: center;
+                color: #3c9bd6;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                p {
+                    margin-bottom: 0 !important;
+                }
+            }
+        }
+
+        li:nth-child(2) {
+            display: none;
+        }
+    }
+}

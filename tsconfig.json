@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "checkJs": true /* Report errors in .js files. */,
+        "composite": true,
+        "declaration": true /* Generates corresponding '.d.ts' file. */,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "react",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "noEmit": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": false,
+        "noUnusedLocals": true /* Report errors on unused locals. */,
+        //    "noUnusedParameters": true, /* Report errors on unused parameters. */
+        "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
+        "noImplicitThis": true /* Raise error on 'this' expressions with an implied 'any' type. */,
+        "isolatedModules": true,
+        "resolveJsonModule": true,
+        "strictFunctionTypes": true /* Enable strict checking of function types. */,
+        "strictNullChecks": true /* Enable strict null checks. */,
+        "skipLibCheck": true,
+        "strict": true,
+        "sourceMap": true,
+        "allowUnreachableCode": true,
+        "declarationDir": "./types",
+        "paths": {
+            "@/*": ["src/*"],
+            "@@/*": ["./*"]
+        },
+        "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    },
+    "exclude": ["node_modules", "**/*.spec.ts"],
+    "include": ["src/**/*", "src/locales/ja-JP.json"]
+}

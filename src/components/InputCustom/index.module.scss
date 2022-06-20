@@ -1,0 +1,132 @@
+@import "../../global";
+
+.inputCustom {
+    :global {
+        .ant-form-item-label {
+            label {
+                color: #333333;
+                font-size: 1.1rem;
+
+                &:before {
+                    display: none !important;
+                }
+            }
+        }
+
+        .ant-form-item-control {
+            .ant-form-item-control-input {
+                .ant-form-item-control-input-content {
+                    .ant-input-disabled {
+                        background: #e5e5e5;
+                        color: #333333;
+                    }
+
+                    .ant-input-affix-wrapper,
+                    .ant-input-number,
+                    .ant-picker,
+                    .ant-input-number-affix-wrapper {
+                        padding: 0 11px;
+                        border-radius: 7px;
+                        color: #333333;
+                        border-color: $blue !important;
+                        box-shadow: none !important;
+                    }
+
+                    .ant-input-number-handler-wrap {
+                        display: none;
+                    }
+
+                    .ant-input-number-group {
+                        .ant-input-number {
+                            width: 100%;
+                            border-right: none;
+                            border-radius: 7px 0 0 7px;
+                        }
+
+                        .ant-input-number-group-addon {
+                            border-top-right-radius: 7px;
+                            border-bottom-right-radius: 7px;
+                            border-color: #23418c !important;
+                            background: transparent;
+                        }
+                    }
+                }
+            }
+        }
+
+        .ant-select-disabled {
+            .ant-select-selector {
+                background: #e5e5e5 !important;
+                color: #333333 !important;
+            }
+        }
+
+        .ant-select-selector {
+            height: 3rem !important;
+            font-size: 1.1rem;
+            color: #333333;
+            border-color: $blue !important;
+            border-radius: 7px !important;
+
+            .ant-select-selection-item {
+                line-height: 3rem;
+            }
+        }
+
+        .ant-select-arrow {
+            color: #333333 !important;
+            font-size: 1.1rem !important;
+            width: 1.1rem;
+            height: 1.1rem;
+        }
+    }
+
+    .required {
+        color: #ff0000;
+    }
+
+    input,
+    textarea {
+        font-size: 1.1rem;
+        color: #333333;
+        border-color: $blue !important;
+        border-radius: 7px;
+        box-shadow: none !important;
+    }
+
+    input {
+        height: 3rem;
+    }
+}
+
+.inputCustomImage {
+    :global {
+        .ant-form-item-label {
+            margin: unset !important;
+        }
+    }
+}
+
+.inputRadioCustom {
+    :global {
+        .ant-radio-inner {
+            height: 20px;
+            width: 20px;
+            border-color: #333 !important;
+        }
+
+        .ant-radio-checked {
+            .ant-radio-inner {
+                background: #333;
+
+                &:after {
+                    display: none !important;
+                }
+            }
+        }
+    }
+}
+
+.inputCustomImageHide {
+    visibility: hidden;
+}
