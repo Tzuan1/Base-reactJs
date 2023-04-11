@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+    hrm-gitlab-runner:
+        image: "gitlab/gitlab-runner:latest"
+        container_name: app_gitlab_runner
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ./gitlab-runner-config:/etc/gitlab-runner
+        restart: always
