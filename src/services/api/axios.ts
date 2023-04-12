@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios"
-import { getDataStorage, getRole } from "@/shared"
+import { getDataStorage } from "@/shared"
 import history from "@/shared/helper/history"
-import { roleAccount, statusCode } from "@/shared/constants"
+import { statusCode } from "@/shared/constants"
 
 const apiConfig = axios.create({
     baseURL: process.env.APP_URL,
@@ -31,12 +31,7 @@ apiConfig.interceptors.response.use(
     (error: any) => {
         const { status } = error.response
         if (status === statusCode.expired_token) {
-            if (!getRole() || getRole() === roleAccount.seito) {
-                history.push("/login")
-                return
-            }
-
-            history.push("/staff/login")
+            history.push("/login")
             return
         }
         return error.response
