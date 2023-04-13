@@ -94,19 +94,22 @@ const HeaderCalendar = () => {
                     />
 
                     <ButtonCustom
-                        colorButton="#fff"
-                        onActions={handleToggleShowMenu}
+                        text=""
+                        className="btnCloseMenu"
                         icon={IconMenu}
-                        classCustom="btnCloseMenu"
+                        onClick={handleToggleShowMenu}
+                        style={{ backgroundColor: "#fff" }}
                     />
                 </div>
             </div>
             <div className={btnAction()}>
                 <ButtonCustom
-                    colorButton="transparent"
-                    onActions={handleToggleShowMenu}
+                    text=""
+                    type="primary"
+                    onClick={handleToggleShowMenu}
+                    style={{ backgroundColor: "transparent" }}
                     icon={CloseNavbarMb}
-                    classCustom="btnCloseMenu"
+                    className="btnCloseMenu"
                 />
                 <MenuDropdown />
             </div>

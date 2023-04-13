@@ -26,8 +26,10 @@ type IPropsInput = {
     title?: string
     typeInput?: string
     listDataRadio?: Object[]
+    listDataSelect?: Object[]
     listNameImage?: any[]
     valChecked?: any
+    valSelect?: any
     name?: string
     maxSizeImage?: number
     valueInput?: any
@@ -37,6 +39,7 @@ type IPropsInput = {
     required?: boolean
     suffix?: string
     handleOnChange?: (value: any) => void
+    onChangeRadio?: (value: any) => void
     refPass?: any
 }
 // input custom use all in project
@@ -48,7 +51,9 @@ const InputCustom = ({
     typeInput,
     name,
     listDataRadio,
+    listDataSelect,
     valChecked,
+    valSelect,
     placeholder,
     rules,
     required,
@@ -60,6 +65,7 @@ const InputCustom = ({
     valueInput,
     onKeyPress,
     handleOnChange,
+    onChangeRadio,
     refPass
 }: IPropsInput) => {
     // list css custom label
@@ -132,7 +138,7 @@ const InputCustom = ({
     const renderTypeInput = () => {
         switch (typeInput) {
             case typeInputCustom.date:
-                const dateFormat = "YYYY年MM月DD日"
+                const dateFormat = "YYYY/MM/DD"
                 const customFormat = (value: any) =>
                     `${value.format(dateFormat)}`
                 return (
@@ -159,6 +165,7 @@ const InputCustom = ({
                         size="large"
                         name={name}
                         value={valChecked}
+                        onChange={onChangeRadio}
                     >
                         {listDataRadio &&
                             listDataRadio.map((item: any, index) => (
@@ -171,13 +178,16 @@ const InputCustom = ({
             case typeInputCustom.select:
                 return (
                     <Select
-                        defaultValue="lucy"
+                        defaultValue={valSelect}
                         className={classCustomInput}
                         disabled={disabled}
                     >
-                        <Option value="jack">Jack</Option>
-                        <Option value="lucy">Lucy</Option>
-                        <Option value="Yiminghe">yiminghe</Option>
+                        {listDataSelect &&
+                            listDataSelect.map((item: any, index) => (
+                                <Option key={index} value={item.value}>
+                                    {item.label}
+                                </Option>
+                            ))}
                     </Select>
                 )
             case typeInputCustom.password:
@@ -226,7 +236,7 @@ const InputCustom = ({
         <Form.Item
             label={
                 <div>
-                    <span>{title}</span>
+                    <span className="input-title">{title}</span>
                     <span className={styles.required}>
                         {required ? "（必須）" : ""}
                     </span>

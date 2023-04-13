@@ -18,11 +18,7 @@ const DropdownCustom = ({
     menuDropdown
 }: IDropdownCustom) => {
     return (
-        <Dropdown
-            overlay={menuDropdown}
-            placement={placement}
-            trigger={["click"]}
-        >
+        <Dropdown menu={menuDropdown} placement={placement} trigger={["click"]}>
             <a
                 href="#"
                 className={styles.headerLink}

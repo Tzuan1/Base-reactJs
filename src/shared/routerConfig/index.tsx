@@ -3,6 +3,7 @@ import { IRouter } from "@/@type"
 import Login from "@/modules/Login"
 import NoMatch from "@/modules/NoMatch"
 import Tuition from "@/modules/Tuition"
+import TestComponents from "@/modules/TestComponents"
 
 const routerDefine: IRouter[] = [
     {
@@ -14,7 +15,13 @@ const routerDefine: IRouter[] = [
         path: "/tuition",
         exact: true,
         component: <Tuition />,
-        isAuth: true
+        isAuth: false
+    },
+    {
+        path: "/testComponents",
+        exact: true,
+        component: <TestComponents />,
+        isAuth: false
     },
     {
         path: "*",
