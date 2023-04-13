@@ -1,78 +1,87 @@
-import React from "react"
+import React, { ComponentType, Suspense } from "react"
 import { ConnectedRouter } from "connected-react-router"
+import { BrowserRouter, Route, RouteProps, Switch } from "react-router-dom"
 import history from "@/shared/helper/history"
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
 import routerDefine from "@/shared/routerConfig"
-import { checkAuthentication } from "@/shared"
-import LayoutCalendar from "@/components/LayoutCalendar"
+
+interface Props extends RouteProps {
+    layout?: React.FunctionComponent<any>
+    component: ComponentType
+    width?: string
+    name?: string
+}
 
 const Router = () => {
     return (
         <ConnectedRouter history={history}>
             <div>
                 <BrowserRouter>
-                    <Switch>
-                        {routerDefine.map((itemRouter, index) => {
-                            if (itemRouter.isAuth) {
+                    <Suspense fallback={<></>}>
+                        <Switch>
+                            {routerDefine.map((itemRouter, index) => {
+                                if (itemRouter.isAuth) {
+                                    return (
+                                        <PrivateRoute
+                                            key={index}
+                                            path={itemRouter.path}
+                                            exact={itemRouter.exact}
+                                            role={itemRouter.role}
+                                        >
+                                            {routeWrapper(
+                                                itemRouter?.layout,
+                                                itemRouter.component,
+                                                itemRouter.width
+                                            )}
+                                        </PrivateRoute>
+                                    )
+                                }
                                 return (
-                                    <PrivateRoute
+                                    <Route
+                                        exact={itemRouter.exact}
                                         key={index}
                                         path={itemRouter.path}
-                                        exact={itemRouter.exact}
-                                        role={itemRouter.role}
                                     >
-                                        {itemRouter.component}
-                                    </PrivateRoute>
+                                        {routeWrapper(
+                                            itemRouter.layout,
+                                            itemRouter.component,
+                                            itemRouter.width
+                                        )}
+                                    </Route>
                                 )
-                            }
-                            return (
-                                <Route
-                                    exact={itemRouter.exact}
-                                    key={index}
-                                    path={itemRouter.path}
-                                >
-                                    {itemRouter.component}
-                                </Route>
-                            )
-                        })}
-                    </Switch>
+                            })}
+                        </Switch>
+                    </Suspense>
                 </BrowserRouter>
             </div>
         </ConnectedRouter>
     )
 }
 
-function PrivateRoute({ children, role, ...rest }: any) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function PrivateRoute({ children, role, test, ...rest }: any) {
     return (
-        <LayoutCalendar>
-            <Route
-                {...rest}
-                render={({ location }) => {
-                    if (checkAuthentication()) {
-                        // if (!checkPermissionRouter(location)) {
-                        //     return (
-                        //         <Redirect
-                        //             to={{
-                        //                 pathname: "/login",
-                        //                 state: { from: location }
-                        //             }}
-                        //         />
-                        //     )
-                        // }
-                        return children
-                    }
-                    return (
-                        <Redirect
-                            to={{
-                                pathname: "/login",
-                                state: { from: location }
-                            }}
-                        />
-                    )
-                }}
-            />
-        </LayoutCalendar>
+        <Route
+            {...rest}
+            render={() => {
+                return children
+            }}
+        />
     )
+}
+
+const routeWrapper = (
+    Layout: Props["layout"],
+    Component: Props["component"],
+    width?: Props["width"]
+) => {
+    if (Layout) {
+        return (
+            <Layout width={width}>
+                <Component />
+            </Layout>
+        )
+    }
+    return <Component />
 }
 
 export default Router

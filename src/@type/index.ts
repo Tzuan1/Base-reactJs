@@ -1,10 +1,15 @@
+import { ComponentType, FunctionComponent } from "react"
+
 type IRouter = {
     exact: boolean
     path: string
-    component: JSX.Element
+    component: ComponentType
+    layout?: FunctionComponent
     title?: string
     isAuth?: boolean
     role?: string[]
+    width?: string
+    name?: string
 }
 
 type IResponeApi = {

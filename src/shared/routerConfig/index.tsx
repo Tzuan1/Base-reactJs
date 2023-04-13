@@ -1,32 +1,43 @@
-import React from "react"
 import { IRouter } from "@/@type"
-import Login from "@/modules/Login"
-import NoMatch from "@/modules/NoMatch"
-import Tuition from "@/modules/Tuition"
-import TestComponents from "@/modules/TestComponents"
+import { lazy } from "react"
+import { PATH_ROUTES } from "./PathRoutes"
+
+import Layout from "@/components/Layout"
+const Login = lazy(() => import("@/modules/Login"))
+const NoMatch = lazy(() => import("@/modules/NoMatch"))
+const Tuition = lazy(() => import("@/modules/Tuition"))
+const TestComponents = lazy(() => import("@/modules/TestComponents"))
+const DashBoard = lazy(() => import("@/modules/DashBoard"))
 
 const routerDefine: IRouter[] = [
     {
-        path: "/login",
+        path: PATH_ROUTES.INDEX,
         exact: true,
-        component: <Login />
+        component: DashBoard,
+        layout: Layout
     },
     {
-        path: "/tuition",
+        path: PATH_ROUTES.LOGIN,
         exact: true,
-        component: <Tuition />,
+        component: Login
+    },
+    {
+        path: PATH_ROUTES.TUITION,
+        exact: true,
+        component: Tuition,
         isAuth: false
     },
     {
-        path: "/testComponents",
+        path: PATH_ROUTES.TEST_COMPONENTS,
         exact: true,
-        component: <TestComponents />,
-        isAuth: false
+        component: TestComponents,
+        isAuth: false,
+        layout: Layout
     },
     {
         path: "*",
         exact: false,
-        component: <NoMatch />
+        component: NoMatch
     }
 ]
 

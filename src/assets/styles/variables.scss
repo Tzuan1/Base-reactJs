@@ -1,0 +1,82 @@
+// colors
+$redBrown: #a81f2c;
+$redLight: #cc0033;
+$dark: #13202f;
+$green: #9fc51d;
+$yellow: #ffe58d;
+$grey: #d0cfc9;
+$blackGrey: #53524d;
+$grayDark: #a5a5a5;
+$lightGrayishBlue: #ebeef1;
+$veryLightGray: #f8f8f8;
+$darkYellow: #eca829;
+$bgSurveyQuestion: #fff1f1;
+
+$orange: #ff8c00;
+$white: #fff;
+$black: #000000;
+$blue: #23418c;
+$blueLogin: #0268cc;
+$grayBorder: #707070;
+$blueButton: #5585ce;
+$greyLight: #00000014;
+$whiteGray: #e5e3e3;
+$blackText: #191919;
+$pinkText: rgba(168, 31, 44, 0.1);
+$whiteGrayBorder: #dddddd;
+$blueGray: #8c96a0;
+$magicalMoonlight: #f5f3f2;
+$eerieBlack: #212121;
+$gainsboro: #d9d9d9;
+$midNight: #273441;
+$diamondCut: #e8e8f0;
+$bgComment: #f5f6f7;
+$fauxDark: #506478;
+$wispPink: #fdeeee;
+$lightRed: #f0f0f0;
+$nightRider: #333333;
+$whisper: #e5e5e5;
+$tintsOfSnow: #fff9f9;
+$lapisLazuli: #467cba;
+$tintsOfAmour: #f6e9ea;
+
+// font-size
+$defaultFontSize: 1.6rem;
+
+// fonts
+$notoSansJp: "Noto Sans JP";
+$sansSerif: sans-serif;
+
+// screen breakpoints
+$smallPhone: 320px;
+$largePhone: 768px;
+$tablet: 960px;
+$desktop: 1200px;
+$desktopLarge: 1400px;
+
+// mixins
+// Media query
+@mixin for-phone {
+    @media only screen and (max-width: $largePhone),
+        (max-width: 959.9px) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin for-tablet {
+    @media only screen and (min-width: $largePhone) and (max-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin for-tablet-desktop {
+    @media only screen and (min-width: $largePhone) {
+        @content;
+    }
+}
+
+@mixin for-desktop {
+    @media only screen and (min-width: $desktop) {
+        @content;
+    }
+}
