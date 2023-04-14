@@ -4,20 +4,20 @@ import { Spin } from "antd"
 
 import styles from "./index.scss"
 
-const DashBoard = () => {
+const Projects = () => {
     const { isLoading } = useSelector((state: RootStateOrAny) => state.tuition)
 
     useEffect(() => {}, [])
 
     return (
-        <div className={styles.dashboard}>
+        <div className={styles.tuitionPage}>
             <Spin spinning={isLoading}>
-                <div className={styles.dashboardComponent}>
-                    <h3>Dashboard</h3>
+                <div className={styles.tuitionComponent}>
+                    <h3>projects</h3>
                 </div>
             </Spin>
         </div>
     )
 }
 
-export default DashBoard
+export default Projects

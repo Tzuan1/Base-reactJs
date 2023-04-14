@@ -4,5 +4,6 @@ export const PATH_ROUTES = {
     LOGIN: "/login",
     NOMATCH: "/NoMatch",
     TUITION: "/Tuition",
-    TEST_COMPONENTS: "/TestComponents"
+    TEST_COMPONENTS: "/TestComponents",
+    PROJECTS: "/projects"
 }
