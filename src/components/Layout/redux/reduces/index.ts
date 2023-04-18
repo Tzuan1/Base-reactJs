@@ -5,16 +5,16 @@ const { Types, Creators } = createActions({
 })
 
 const INITIAL_STATE = {
-    currentText: "Dash board"
+    titlePage: ""
 }
 
-export const layoutTypes: any = Types
+export const layoutActionTypes: any = Types
 export default Creators
 
 const layoutTitleRequest = (state = INITIAL_STATE, { payload }: any) => {
     return {
         ...state,
-        currentText: payload
+        titlePage: payload
     }
 }
 

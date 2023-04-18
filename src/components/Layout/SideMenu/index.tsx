@@ -1,133 +1,72 @@
 import { PATH_ROUTES } from "@/shared/routerConfig/PathRoutes"
-import React from "react"
-import { NavLink } from "react-router-dom"
+import React, { useCallback, useEffect } from "react"
+import { NavLink, useLocation } from "react-router-dom"
 import styles from "./index.module.scss"
 
 //img
 import Logo from "@/assets/image/logo-miichi.svg"
-import Dashboard from "@/assets/icons/dashboard.svg"
-import Project from "@/assets/icons/project.svg"
-import Admin from "@/assets/icons/administrator.svg"
-import User from "@/assets/icons/user.svg"
-import Customer from "@/assets/icons/customer.svg"
-import Setting from "@/assets/icons/setting.svg"
-import Help from "@/assets/icons/help.svg"
+
 import { useDispatch } from "react-redux"
+import { layoutActionTypes } from "../redux/reduces"
+import routerDefine from "@/shared/routerConfig"
+import { IRouter } from "@/@type"
+import { objectHasKey } from "@/shared/function"
 // import DashboardActive from "@/assets/icons/dashboard-active.svg"
+
+interface ITypeActionSideMenu {
+    titlePage: string
+}
 
 const SideMenu = () => {
     const dispatch = useDispatch()
+    const location = useLocation()
+
+    useEffect(() => {
+        const titleDefault = routerDefine.find(
+            (e: IRouter) => e.path === location.pathname
+        )
+
+        if (titleDefault && titleDefault.title) {
+            handleClickSideMenu({ titlePage: titleDefault.title })
+        }
+    }, [])
+
+    const handleClickSideMenu = useCallback(
+        (dataAction: ITypeActionSideMenu) => {
+            const { titlePage } = dataAction
+            dispatch({
+                type: layoutActionTypes.SET_LAYOUT_TITLE,
+                payload: titlePage
+            })
+        },
+        []
+    )
+
     return (
         <div className={styles.sideMenuCompany} id="sidebar">
             <NavLink className="logo" to={PATH_ROUTES.INDEX}>
                 <img src={Logo} alt="via-learn" />
             </NavLink>
             <div className="menu-list">
-                <NavLink
-                    className="menu-item"
-                    to={PATH_ROUTES.INDEX}
-                    exact={true}
-                    activeClassName="item-selected"
-                    onClick={() =>
-                        dispatch({
-                            type: "SET_LAYOUT_TITLE",
-                            payload: "Dash Board"
-                        })
-                    }
-                >
-                    <img src={Dashboard} />
-                    Dash Board
-                </NavLink>
-                <NavLink
-                    className="menu-item"
-                    to={PATH_ROUTES.PROJECTS}
-                    exact={true}
-                    activeClassName="item-selected"
-                    onClick={() =>
-                        dispatch({
-                            type: "SET_LAYOUT_TITLE",
-                            payload: "Dự án"
-                        })
-                    }
-                >
-                    <img src={Project} />
-                    Dự án
-                </NavLink>
-                <NavLink
-                    className="menu-item"
-                    to={"/administrator"}
-                    exact={true}
-                    activeClassName="item-selected"
-                    onClick={() =>
-                        dispatch({
-                            type: "SET_LAYOUT_TITLE",
-                            payload: "Hành chính"
-                        })
-                    }
-                >
-                    <img src={Admin} />
-                    Hành chính
-                </NavLink>
-                <NavLink
-                    className="menu-item"
-                    to={"/member"}
-                    exact={true}
-                    activeClassName="item-selected"
-                    onClick={() =>
-                        dispatch({
-                            type: "SET_LAYOUT_TITLE",
-                            payload: "Nhân sự"
-                        })
-                    }
-                >
-                    <img src={User} />
-                    Nhân sự
-                </NavLink>
-                <NavLink
-                    className="menu-item"
-                    to={"/customer"}
-                    exact={true}
-                    activeClassName="item-selected"
-                    onClick={() =>
-                        dispatch({
-                            type: "SET_LAYOUT_TITLE",
-                            payload: "Khách hàng"
-                        })
-                    }
-                >
-                    <img src={Customer} />
-                    Khách hàng
-                </NavLink>
-                <NavLink
-                    className="menu-item"
-                    to={"/setting"}
-                    exact={true}
-                    activeClassName="item-selected"
-                    onClick={() =>
-                        dispatch({
-                            type: "SET_LAYOUT_TITLE",
-                            payload: "Cài đặt"
-                        })
-                    }
-                >
-                    <img src={Setting} />
-                    Cài đặt
-                </NavLink>
-                <NavLink
-                    className="menu-item"
-                    to={"/help"}
-                    exact={true}
-                    activeClassName="item-selected"
-                    onClick={() =>
-                        dispatch({
-                            type: "SET_LAYOUT_TITLE",
-                            payload: "Help"
-                        })
-                    }
-                >
-                    <img src={Help} />
-                    Help
-                </NavLink>
+                {routerDefine.map((itemRouter, key) =>
+                    objectHasKey(itemRouter, "sideMenu") ? (
+                        <NavLink
+                            key={key}
+                            className="menu-item"
+                            to={itemRouter.path}
+                            exact={itemRouter.exact}
+                            activeClassName="item-selected"
+                            onClick={() =>
+                                handleClickSideMenu({
+                                    titlePage: itemRouter.title || ""
+                                })
+                            }
+                        >
+                            <img src={itemRouter.logo} />
+                            {itemRouter.title || ""}
+                        </NavLink>
+                    ) : null
+                )}
             </div>
         </div>
     )

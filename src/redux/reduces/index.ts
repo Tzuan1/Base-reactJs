@@ -10,5 +10,5 @@ export const rootReducer = (history: History) =>
         router: connectRouter(history),
         popup: popupReducer,
         tuition: tuitionCalendarReducer,
-        layoutTitle: layoutTitleReducer
+        layoutGlobal: layoutTitleReducer
     })
