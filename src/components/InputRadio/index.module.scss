@@ -1,0 +1,20 @@
+@import "@/assets/styles/variables";
+
+.inputRadioCustom {
+    :global {
+        .ant-radio-inner {
+            height: 20px;
+            width: 20px;
+            border-color: #333 !important;
+        }
+        .ant-radio-checked {
+            .ant-radio-inner {
+                background: #333;
+
+                &:after {
+                    display: none !important;
+                }
+            }
+        }
+    }
+}

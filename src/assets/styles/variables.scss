@@ -1,0 +1,91 @@
+// colors
+$redBrown: #a81f2c;
+$redLight: #d7481b;
+$dark: #151d48;
+$green: #04d182;
+$yellow: #f4c22b;
+$grey: #d0cfc9;
+$blackGrey: #737791;
+$grayDark: #a5a5a5;
+$lightGrayishBlue: #ebeef1;
+$veryLightGray: #f8f8f8;
+$darkYellow: #eca829;
+$bgSurveyQuestion: #fff1f1;
+
+$orange: #ff8c00;
+$white: #fff;
+$black: #000000;
+$blue: #1cb4e6;
+$red: #f44236;
+$blueLogin: #0268cc;
+$grayBorder: #707070;
+$blueButton: #5585ce;
+$greyLight: #00000014;
+$whiteGray: #f2f2f2;
+$blackText: #191919;
+$pinkText: rgba(168, 31, 44, 0.1);
+$whiteGrayBorder: #dddddd;
+$blueGray: #8c96a0;
+$magicalMoonlight: #fafbfc;
+$eerieBlack: #212121;
+$gainsboro: #d9d9d9;
+$midNight: #273441;
+$diamondCut: #e8e8f0;
+$bgComment: #f5f6f7;
+$fauxDark: #506478;
+$wispPink: #fdeeee;
+$lightRed: #f0f0f0;
+$nightRider: #333333;
+$whisper: #e5e5e5;
+$tintsOfSnow: #fff9f9;
+$lapisLazuli: #467cba;
+$tintsOfAmour: #f6e9ea;
+
+// font-size
+$defaultFontSize: 1.6rem;
+
+// fonts
+$poppins: "Poppins", sans-serif !important;
+$sansSerif: sans-serif;
+
+// screen breakpoints
+$smallPhone: 320px;
+$largePhone: 768px;
+$tablet: 960px;
+$desktop: 1200px;
+$desktopLarge: 1400px;
+$screenResponse: 992px;
+$zindex_templatePopupBooking: -99;
+$zindex_0: 0;
+$zindex_headerCalendar: 1;
+$zindex_messager: 2;
+$zindex_itemBookingTime: 50;
+$zindex_menuRight: 99;
+$zindex_messageFilter: 100;
+
+// mixins
+// Media query
+@mixin for-phone {
+    @media only screen and (max-width: $largePhone),
+        (max-width: 959.9px) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin for-tablet {
+    @media only screen and (min-width: $largePhone) and (max-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin for-tablet-desktop {
+    @media only screen and (min-width: $largePhone) {
+        @content;
+    }
+}
+
+@mixin for-desktop {
+    @media only screen and (min-width: $desktop) {
+        @content;
+    }
+}

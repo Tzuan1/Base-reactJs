@@ -1,0 +1,133 @@
+@import "@/assets/styles/variables";
+.newMessageModal {
+    :global {
+        .ant-modal-body {
+            flex: 1 1 0;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .ant-modal-content {
+            .ant-form-horizontal {
+                margin-top: 40px;
+            }
+
+            border-radius: 15px;
+            border-top: 6px solid #5585ce;
+            width: auto;
+            background-color: #f5f6f7;
+
+            .ant-modal-close {
+                margin-right: 10px;
+                margin-top: 10px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+
+                .ant-modal-close-x {
+                    position: relative;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background-color: #fff;
+
+                    .ant-modal-close-icon {
+                        color: #5585ce;
+                        position: absolute;
+                        left: 3px;
+                        top: 3px;
+
+                        svg {
+                            stroke-width: 5%;
+                            width: 14px;
+                            height: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1024px) {
+    }
+
+    @media only screen and (max-width: 1024px) and (orientation: landscape) {
+        top: 0 !important;
+    }
+
+    @media only screen and (max-width: $screenResponse) {
+        max-width: 100% !important;
+        width: 100% !important;
+        position: absolute !important;
+        height: 100%;
+        top: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+
+        :global {
+            .ant-modal-content {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+
+                .ant-modal-footer {
+                    button {
+                        height: 45px;
+                    }
+                }
+            }
+        }
+
+        .formMessageModal {
+            .titleChatNew {
+                display: block !important;
+            }
+
+            .formGroup {
+                .label {
+                    color: #000333;
+                }
+            }
+        }
+    }
+}
+
+.reportDetailModal {
+    top: 65px !important;
+    width: 845px !important;
+
+    :global {
+        .ant-modal-body {
+            padding: 40px 22px;
+        }
+
+        .ant-modal-content {
+            border-radius: 12px;
+        }
+    }
+
+    @media only screen and (max-width: $screenResponse) {
+        top: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden;
+
+        :global {
+            .ant-modal-close {
+                display: none;
+            }
+
+            .ant-modal-body {
+                padding: 0;
+            }
+
+            .ant-modal-content {
+                height: 100%;
+                border-radius: 0;
+            }
+        }
+    }
+}
