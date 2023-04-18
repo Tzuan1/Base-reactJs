@@ -50,7 +50,7 @@ const SideMenu = () => {
                 </NavLink>
                 <NavLink
                     className="menu-item"
-                    to={"/member"}
+                    to={PATH_ROUTES.USER}
                     exact={true}
                     activeClassName="item-selected"
                 >

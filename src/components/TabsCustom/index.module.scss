@@ -1,0 +1,58 @@
+@import "@/assets/styles/variables";
+
+.tabsCustom {
+    :global {
+        .ant-tabs {
+            background-color: #fff;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+            .container-cus {
+                padding: 0 30px 0 0;
+            }
+            &-nav {
+                &:before {
+                    border-bottom: 0;
+                }
+                &-wrap {
+                    background-color: #f7f7f7;
+                }
+                &-list {
+                    border-bottom: 3px solid #cfd4da;
+                }
+            }
+            &-ink-bar {
+                background: #d7481b;
+                bottom: -3px !important;
+                height: 3px !important;
+            }
+            &-tab {
+                color: #808a98;
+                font-size: 14px;
+                padding: 14px 22px;
+                margin: 0 !important;
+                font-weight: 400;
+                &:hover {
+                    color: #252e3b !important;
+                }
+                &-btn {
+                    p {
+                        margin: 0;
+                    }
+                }
+                &-active {
+                    .ant-tabs-tab-btn {
+                        color: #252e3b !important;
+                    }
+                }
+                .count {
+                    padding: 0px 6px 1px;
+                    background: #e9ecf1;
+                    border-radius: 20px;
+                    font-size: 12px;
+                    display: inline-block;
+                    margin-left: 6px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}

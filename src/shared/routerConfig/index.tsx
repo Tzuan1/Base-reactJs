@@ -9,6 +9,7 @@ const Tuition = lazy(() => import("@/modules/Tuition"))
 const TestComponents = lazy(() => import("@/modules/TestComponents"))
 const DashBoard = lazy(() => import("@/modules/DashBoard"))
 const Projects = lazy(() => import("@/modules/Projects"))
+const User = lazy(() => import("@/modules/User"))
 
 const routerDefine: IRouter[] = [
     {
@@ -39,6 +40,13 @@ const routerDefine: IRouter[] = [
         path: PATH_ROUTES.PROJECTS,
         exact: true,
         component: Projects,
+        isAuth: false,
+        layout: Layout
+    },
+    {
+        path: PATH_ROUTES.USER,
+        exact: true,
+        component: User,
         isAuth: false,
         layout: Layout
     },

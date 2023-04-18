@@ -5,5 +5,6 @@ export const PATH_ROUTES = {
     NOMATCH: "/NoMatch",
     TUITION: "/Tuition",
     TEST_COMPONENTS: "/TestComponents",
-    PROJECTS: "/projects"
+    PROJECTS: "/projects",
+    USER: "/user"
 }
