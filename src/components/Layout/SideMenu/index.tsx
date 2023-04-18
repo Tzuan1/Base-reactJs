@@ -12,9 +12,11 @@ import User from "@/assets/icons/user.svg"
 import Customer from "@/assets/icons/customer.svg"
 import Setting from "@/assets/icons/setting.svg"
 import Help from "@/assets/icons/help.svg"
+import { useDispatch } from "react-redux"
 // import DashboardActive from "@/assets/icons/dashboard-active.svg"
 
 const SideMenu = () => {
+    const dispatch = useDispatch()
     return (
         <div className={styles.sideMenuCompany} id="sidebar">
             <NavLink className="logo" to={PATH_ROUTES.INDEX}>
@@ -26,6 +28,12 @@ const SideMenu = () => {
                     to={PATH_ROUTES.INDEX}
                     exact={true}
                     activeClassName="item-selected"
+                    onClick={() =>
+                        dispatch({
+                            type: "SET_LAYOUT_TITLE",
+                            payload: "Dash Board"
+                        })
+                    }
                 >
                     <img src={Dashboard} />
                     Dash Board
@@ -35,6 +43,12 @@ const SideMenu = () => {
                     to={PATH_ROUTES.PROJECTS}
                     exact={true}
                     activeClassName="item-selected"
+                    onClick={() =>
+                        dispatch({
+                            type: "SET_LAYOUT_TITLE",
+                            payload: "Dự án"
+                        })
+                    }
                 >
                     <img src={Project} />
                     Dự án
@@ -44,6 +58,12 @@ const SideMenu = () => {
                     to={"/administrator"}
                     exact={true}
                     activeClassName="item-selected"
+                    onClick={() =>
+                        dispatch({
+                            type: "SET_LAYOUT_TITLE",
+                            payload: "Hành chính"
+                        })
+                    }
                 >
                     <img src={Admin} />
                     Hành chính
@@ -53,6 +73,12 @@ const SideMenu = () => {
                     to={"/member"}
                     exact={true}
                     activeClassName="item-selected"
+                    onClick={() =>
+                        dispatch({
+                            type: "SET_LAYOUT_TITLE",
+                            payload: "Nhân sự"
+                        })
+                    }
                 >
                     <img src={User} />
                     Nhân sự
@@ -62,6 +88,12 @@ const SideMenu = () => {
                     to={"/customer"}
                     exact={true}
                     activeClassName="item-selected"
+                    onClick={() =>
+                        dispatch({
+                            type: "SET_LAYOUT_TITLE",
+                            payload: "Khách hàng"
+                        })
+                    }
                 >
                     <img src={Customer} />
                     Khách hàng
@@ -71,6 +103,12 @@ const SideMenu = () => {
                     to={"/setting"}
                     exact={true}
                     activeClassName="item-selected"
+                    onClick={() =>
+                        dispatch({
+                            type: "SET_LAYOUT_TITLE",
+                            payload: "Cài đặt"
+                        })
+                    }
                 >
                     <img src={Setting} />
                     Cài đặt
@@ -80,6 +118,12 @@ const SideMenu = () => {
                     to={"/help"}
                     exact={true}
                     activeClassName="item-selected"
+                    onClick={() =>
+                        dispatch({
+                            type: "SET_LAYOUT_TITLE",
+                            payload: "Help"
+                        })
+                    }
                 >
                     <img src={Help} />
                     Help

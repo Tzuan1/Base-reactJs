@@ -4,11 +4,15 @@ import styles from "./index.module.scss"
 import Notify from "@/assets/icons/notification.svg"
 
 import { Dropdown, Space } from "antd"
+import { RootStateOrAny, useSelector } from "react-redux"
 
 const HeaderCompany = () => {
+    const titleHeader = useSelector(
+        (state: RootStateOrAny) => state.layoutTitle.currentText
+    )
     return (
         <div className={styles.headerCommon}>
-            <h2 className="title">Dashboard</h2>
+            <h2 className="title">{titleHeader}</h2>
             <div className="header-info">
                 <div className="header-notify">
                     <img src={Notify} alt="notification" />
