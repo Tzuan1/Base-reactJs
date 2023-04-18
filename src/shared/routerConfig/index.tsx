@@ -6,7 +6,7 @@ import Layout from "@/components/Layout"
 import logoDashboard from "@/assets/icons/dashboard.svg"
 import logoProject from "@/assets/icons/project.svg"
 // import logoAdmin from "@/assets/icons/administrator.svg"
-// import logoUser from "@/assets/icons/user.svg"
+import logoUser from "@/assets/icons/user.svg"
 // import logoCustomer from "@/assets/icons/customer.svg"
 // import logoSetting from "@/assets/icons/setting.svg"
 // import logoHelp from "@/assets/icons/help.svg"
@@ -40,6 +40,16 @@ const routerDefine: IRouter[] = [
         logo: logoProject
     },
     {
+        path: PATH_ROUTES.USER,
+        exact: true,
+        component: User,
+        isAuth: false,
+        layout: Layout,
+        sideMenu: true,
+        title: "Nhân sự",
+        logo: logoUser
+    },
+    {
         path: PATH_ROUTES.LOGIN,
         exact: true,
         component: Login
@@ -57,7 +67,6 @@ const routerDefine: IRouter[] = [
         isAuth: false,
         layout: Layout
     },
-
     {
         path: PATH_ROUTES.USER,
         exact: true,
