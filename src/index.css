@@ -201,3 +201,6 @@ body {
 .table-cus .ant-pagination-item-link {
     border-radius: 4px !important;
 }
+.ant-modal-mask {
+    background: rgba(111, 103, 103, 0.31) !important;
+}

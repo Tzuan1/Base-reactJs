@@ -15,7 +15,6 @@ type ITypeDropdownItemData = {
 
 type ITypeParamsSelectCustom = {
     options: any[]
-    onAction: any
     valueInit?: any
     valueSelect?: any
     suffixIcon?: any
@@ -24,6 +23,8 @@ type ITypeParamsSelectCustom = {
     dropdownClassName?: any
     dropdownStyle?: any
     className?: any
+    onChange?: (...args: any) => void
+    placeholder?: string
 }
 
 type ITypeParamsGetInvoice = {

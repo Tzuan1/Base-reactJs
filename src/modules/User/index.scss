@@ -2,5 +2,92 @@
 .user {
     :global {
         margin-top: 30px;
+        .container-cus {
+            padding: 10px 30px 0 0;
+        }
+        .input-search {
+            position: absolute;
+            right: 0;
+            top: -63px;
+            z-index: 1;
+            &-cus {
+                display: flex;
+                .ant-form-item-control {
+                    position: relative;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 11px;
+                        left: 11px;
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50% !important;
+                        border: 1px solid #999999 !important;
+                        padding: 0 !important;
+                        z-index: 1;
+                    }
+                    &::after {
+                        content: "";
+                        width: 1.4px;
+                        height: 10px;
+                        background-color: #999;
+                        position: absolute;
+                        top: 20px;
+                        left: 24px;
+                        transform: rotate(134deg);
+                        z-index: 1;
+                    }
+                    img {
+                        display: none;
+                    }
+                }
+                input.ant-input {
+                    padding-left: 36px;
+                    height: 37px;
+                    border-color: #ebebeb;
+                    border-radius: 20px;
+                    min-width: 300px;
+                    @media (max-width: $desktopLarge) {
+                        min-width: 250px;
+                    }
+                }
+                .ant-input-group-addon {
+                    right: calc(100% - 12px) !important;
+                    top: -4px;
+                }
+                .btn-filter {
+                    margin: 0 20px 0 12px;
+                    border-radius: 20px;
+                    box-shadow: 0px 4px 4px rgba(241, 233, 233, 0.25);
+                    height: 37px;
+                    padding: 0 27px;
+                    color: #202020;
+                    border: 0;
+                    transition: 0.3s;
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+        .btn-add {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            border: 0;
+            background-color: $red;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 34px;
+            color: $white;
+            line-height: 56px;
+            text-align: center;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 
 .tabsCustom {
     :global {
+        background-color: #fff;
         .ant-tabs {
             background-color: #fff;
             box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -30,12 +31,19 @@
                 padding: 14px 22px;
                 margin: 0 !important;
                 font-weight: 400;
+                @media (max-width: $desktopLarge) {
+                    padding: 14px 18px;
+                }
                 &:hover {
                     color: #252e3b !important;
                 }
                 &-btn {
                     p {
                         margin: 0;
+                        font-size: 16px;
+                        @media (max-width: $desktopLarge) {
+                            font-size: 14px;
+                        }
                     }
                 }
                 &-active {
