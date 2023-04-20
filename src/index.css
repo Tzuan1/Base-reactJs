@@ -148,3 +148,59 @@ body {
     height: 100%;
     width: 100%;
 }
+.container-cus {
+    padding: 30px 30px 30px 20px;
+}
+.ant-card.card-common {
+    background-color: #fff;
+    border: 1px solid #f8f9fa;
+    box-shadow: 0px 4px 20px rgba(238, 238, 238, 0.501967);
+    border-radius: 20px;
+    padding: 5px 0;
+    height: 100%;
+}
+.card-common .ant-card-head {
+    border: 0;
+    border-radius: 20px 20px 0 0;
+}
+.card-common .chart-cus {
+    height: 220px;
+}
+.ant-card-head-title {
+    font-weight: 600;
+    font-size: 20px;
+    color: #05004e;
+    margin-bottom: 0;
+}
+.table-cus .ant-table-thead > tr > th {
+    color: #000;
+}
+.table-cus .ant-table-thead > tr > th::before {
+    content: none !important;
+}
+.table-cus .ant-table-tbody > tr > td {
+    font-size: 15px;
+}
+.table-cus .ant-pagination-item {
+    border-radius: 4px;
+}
+.table-cus .ant-pagination-item {
+    border: 1px solid #dfe3e8;
+}
+.table-cus .ant-pagination-item a {
+    color: #212b36;
+    font-weight: 600;
+}
+.table-cus .ant-pagination-item-active {
+    border-color: #1890ff;
+}
+.table-cus .ant-pagination-item-active a {
+    font-weight: 600;
+    color: #1890ff;
+}
+.table-cus .ant-pagination-item-link {
+    border-radius: 4px !important;
+}
+.ant-modal-mask {
+    background: rgba(111, 103, 103, 0.31) !important;
+}

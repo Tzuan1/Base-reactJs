@@ -1,0 +1,53 @@
+@import "@/assets/styles/variables";
+
+.table {
+    :global {
+        padding: 15px 30px 20px;
+        .ant-table {
+            &-wrapper {
+                padding: 15px 40px;
+            }
+            &-thead {
+                tr > th {
+                    background: #fff;
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: #000;
+                    &::before {
+                        content: none !important;
+                    }
+                }
+            }
+            &-tbody {
+                tr > td {
+                    color: rgba(0, 0, 0, 0.65);
+                    font-size: 15px;
+                }
+            }
+        }
+        .link {
+            color: $blueLink;
+        }
+        .ant-btn {
+            width: 100%;
+            border-radius: 10px;
+            border: 0;
+            &.success {
+                background: $green;
+            }
+            &.yellow {
+                background: $yellow;
+            }
+            &.primary {
+                background: $blue;
+            }
+            &.red {
+                background: $red;
+            }
+            &.light {
+                background: $whiteGray;
+                color: #37474f;
+            }
+        }
+    }
+}

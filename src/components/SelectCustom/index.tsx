@@ -4,8 +4,9 @@ import { ITypeParamsSelectCustom } from "@/modules/Tuition/shared/typings/tuitio
 
 const SelectCustom = ({
     options,
-    onAction,
+    onChange,
     valueInit,
+    placeholder,
     ...res
 }: ITypeParamsSelectCustom) => {
     return (
@@ -15,7 +16,8 @@ const SelectCustom = ({
             options={options}
             showArrow={true}
             style={{ minWidth: "10%" }}
-            onChange={value => onAction(value)}
+            onChange={onChange}
+            placeholder={placeholder}
         ></Select>
     )
 }

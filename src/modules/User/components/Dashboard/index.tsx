@@ -2,12 +2,12 @@ import React, { useEffect } from "react"
 import { RootStateOrAny, useSelector } from "react-redux"
 import { Spin, Col, Row } from "antd"
 
-import styles from "./index.scss"
+import styles from "./index.module.scss"
 
 // components
-import Sales from "./components/Sales"
-import Revenue from "./components/Revenue"
-import Products from "./components/Products"
+import Sales from "../../../DashBoard/components/Sales"
+import Revenue from "../../../DashBoard/components/Revenue"
+import Products from "../../../DashBoard/components/Products"
 
 const DashBoard = () => {
     const { isLoading } = useSelector((state: RootStateOrAny) => state.tuition)
