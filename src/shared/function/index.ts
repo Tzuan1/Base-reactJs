@@ -352,6 +352,14 @@ function compareValueObject({ object1, object2 }) {
     return isCompare
 }
 
+function objectHasKey(objCheck: any, keyCheck: any): boolean {
+    return (
+        objCheck &&
+        typeof objCheck === "object" &&
+        Object.keys(objCheck).includes(keyCheck)
+    )
+}
+
 export {
     autoTrimDebounceInput,
     clearFormatMoney,
@@ -378,5 +386,6 @@ export {
     preventKeyMoneyJP,
     preventKeyLandLinePhone,
     preventKeyMobilePhone,
-    preventKeyZipcode
+    preventKeyZipcode,
+    objectHasKey
 }
