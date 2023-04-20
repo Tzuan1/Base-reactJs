@@ -240,7 +240,11 @@ const TestComponents = () => {
 
             <div className="popup-common">
                 <h2>popup-common</h2>
-                <PopupCustom>
+                <PopupCustom
+                    className="user-btn_item add"
+                    textButton="Add"
+                    titleModal="Thêm Nhân Viên"
+                >
                     <Form
                         onFinish={e => onFinish(e)}
                         initialValues={{ remember: true }}

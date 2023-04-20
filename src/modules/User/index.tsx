@@ -10,6 +10,7 @@ import IconFilter from "@/assets/icons/filter-bold.png"
 // components
 import TableCustom from "@/components/TableCustom"
 import Dashboard from "./components/Dashboard"
+import CreateUser from "./components/CreateUser"
 import TabsCustom from "@/components/TabsCustom"
 import InputCustom from "@/components/InputCustom"
 import ModalCustom from "@/components/ModalCustom"
@@ -17,6 +18,7 @@ import SelectCustom from "@/components/SelectCustom"
 import DatePickerCustom from "@/components/DatePickerCustom"
 
 import { Button, Form, Col, Row, Select, Space } from "antd"
+import PopupCustom from "@/components/PopupCustom"
 
 // type
 type ITypeTabs = {
@@ -37,6 +39,10 @@ const User = () => {
     }
     const handleChange = (value: string[]) => {
         console.log(`selected ${value}`)
+    }
+    const showAddUser = () => {
+        document.getElementById("user")?.classList.toggle("active")
+        document.getElementById("btn-add")?.classList.toggle("active")
     }
     const listSelectDepartment = useMemo(() => {
         return [
@@ -196,7 +202,13 @@ const User = () => {
                         </Button>
                     </div>
                     <TableCustom columns={columns} dataSource={dataSource} />
-                    <Button className="btn-add">+</Button>
+                    <Button
+                        id="btn-add"
+                        className="btn-add"
+                        onClick={() => showAddUser()}
+                    >
+                        +
+                    </Button>
                 </>
             )
         },
@@ -379,6 +391,16 @@ const User = () => {
                     </div>
                 </Form>
             </ModalCustom>
+            <div className="user-btn" id="user">
+                <PopupCustom
+                    className="user-btn_item add"
+                    textButton="Add"
+                    titleModal="Thêm Nhân Viên"
+                >
+                    <CreateUser />
+                </PopupCustom>
+                <Button className="user-btn_item csv">CSV</Button>
+            </div>
         </div>
     )
 }
