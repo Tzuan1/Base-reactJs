@@ -1,29 +1,12 @@
 import apiServices from "@/services/api/axios"
-import {
-    ITypeParamsDownloadInvoice,
-    ITypeParamsDownloadReceipt,
-    ITypeParamsGetInvoice,
-    ITypeParamsGetReceipt
-} from "@/modules/Tuition/shared/typings/tuition-type"
+import { ITypeParamsGetListUser } from "../shared/typings/user-type"
 
-const TuitionService = {
-    getListInvoice({ limit, pageIndex }: ITypeParamsGetInvoice) {
-        let url = `/list/invoice?limit=${limit}&pageIndex=${pageIndex}`
-        return apiServices.get(url)
-    },
-
-    getListReceipt({ limit, pageIndex }: ITypeParamsGetReceipt) {
-        let url = `/list/receipt?limit=${limit}&pageIndex=${pageIndex}`
-        return apiServices.get(url)
-    },
-    downloadInvoicePdf({ invoice_main_no }: ITypeParamsDownloadInvoice) {
-        let url = `/invoice/download-invoice/${invoice_main_no}`
-        return apiServices.get(url)
-    },
-    downloadReceiptPdf({ receipt_no }: ITypeParamsDownloadReceipt) {
-        let url = `/receipt/download-receipt/${receipt_no}`
+const UserService = {
+    getListUser(payload: ITypeParamsGetListUser) {
+        const { status, pageIndex } = payload
+        let url = `api/users?status=${status}&page=${pageIndex}`
         return apiServices.get(url)
     }
 }
 
-export default TuitionService
+export default UserService
