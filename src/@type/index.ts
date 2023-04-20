@@ -10,6 +10,8 @@ type IRouter = {
     role?: string[]
     width?: string
     name?: string
+    sideMenu?: boolean
+    logo?: string
 }
 
 type IResponeApi = {
