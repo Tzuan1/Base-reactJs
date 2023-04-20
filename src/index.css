@@ -136,10 +136,6 @@ body {
     overflow: auto;
 }
 
-.text-right {
-    text-align: right;
-}
-
 .ant-spin {
     max-height: unset !important;
     width: 100%;
@@ -207,79 +203,4 @@ body {
 }
 .ant-modal-mask {
     background: rgba(111, 103, 103, 0.31) !important;
-}
-.ant-form.form-cus {
-    padding-left: 10px;
-}
-.form-cus .ant-form-item {
-    margin-bottom: 20px;
-}
-.form-cus .ant-form-item-label {
-    white-space: normal;
-    text-align: left;
-}
-.form-cus .ant-form-item-label > label {
-    height: auto;
-    width: 125px;
-    padding-right: 10px;
-    font-size: 15px;
-}
-.form-cus .label-r .ant-form-item-label > label {
-    justify-content: center;
-}
-.form-cus .ant-form-item-label > label::after {
-    content: none;
-}
-.form-cus .ant-form-item-row {
-    align-items: center;
-}
-.form-cus .ant-select-selector,
-.form-cus .ant-picker {
-    border: 1px solid #d0d5dd;
-    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
-    border-radius: 8px !important;
-    min-width: 200px;
-    height: 38px !important;
-    max-height: 38px;
-}
-.form-cus .ant-select-multiple .ant-select-selection-item {
-    color: #fff;
-    line-height: 28px;
-    height: 30px;
-    border-radius: 10px;
-    font-size: 14px;
-    padding: 0 7px 0 10px;
-}
-.form-cus .ant-select-selection-item[title="Onboarding"] {
-    background-color: #04d182;
-}
-.form-cus .ant-select-selection-item[title="Waiting"] {
-    background-color: #f4c22b;
-}
-.form-cus .ant-select-selection-item[title="Retired"] {
-    background-color: #f44236;
-}
-.form-cus .ant-select-selection-item-remove {
-    padding: 0px 2px;
-}
-.form-cus .btn-submit {
-    min-width: 180px;
-    color: #fff;
-    background: rgba(215, 72, 27, 0.8);
-    font-size: 18px;
-    font-weight: 600;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 8px 10px;
-    height: auto;
-    border: 0;
-    transition: 0.3s;
-}
-.form-cus .btn-submit:hover {
-    transform: scale(1.1);
-    background: rgba(215, 72, 27, 0.88);
-}
-.form-cus .form-cus_btn {
-    text-align: center;
-    margin-top: 32px;
 }

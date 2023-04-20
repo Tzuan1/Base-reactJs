@@ -4,7 +4,6 @@ import moment from "moment"
 import styles from "./index.scss"
 
 //img
-import IconFilterR from "@/assets/icons/filter-regular.png"
 import IconFilter from "@/assets/icons/filter-bold.png"
 
 // components
@@ -53,15 +52,15 @@ const User = () => {
     const listSelectPosition = useMemo(() => {
         return [
             {
-                value: "CEO",
+                value: "ceo",
                 name: "CEO"
             },
             {
-                value: "CTO",
+                value: "cto",
                 name: "CTO"
             },
             {
-                value: "DM",
+                value: "dm",
                 name: "DM"
             }
         ]
@@ -191,7 +190,6 @@ const User = () => {
                             className="btn-filter"
                             onClick={() => setModalOpen(true)}
                         >
-                            <img src={IconFilterR} alt="icon" />
                             Filters
                         </Button>
                     </div>
@@ -255,7 +253,7 @@ const User = () => {
                     preserve
                     scrollToFirstError={true}
                 >
-                    <Row gutter={20}>
+                    <Row gutter={30}>
                         <Col span={12}>
                             <Form.Item label="Bộ Phận" name="department">
                                 <SelectCustom
@@ -269,11 +267,7 @@ const User = () => {
                             </Form.Item>
                         </Col>
                         <Col span={12}>
-                            <Form.Item
-                                label="Vị trí"
-                                name="position"
-                                className="label-r"
-                            >
+                            <Form.Item label="Vị trí" name="position">
                                 <SelectCustom
                                     options={listSelectPosition}
                                     fieldNames={{
@@ -285,7 +279,7 @@ const User = () => {
                             </Form.Item>
                         </Col>
                     </Row>
-                    <Row gutter={20}>
+                    <Row gutter={30}>
                         <Col span={24}>
                             <Form.Item label="Status" name="status">
                                 <Select
@@ -317,7 +311,7 @@ const User = () => {
                         </Col>
                     </Row>
                     <Form.Item label="Ngày Vào Công Ty" name="validDay">
-                        <Row gutter={20}>
+                        <Row gutter={30}>
                             <Col span={12}>
                                 <DatePickerCustom
                                     format="DD/MM/YYYY"
@@ -329,7 +323,7 @@ const User = () => {
                                     }
                                 />
                             </Col>
-                            <Col span={12} className="text-right">
+                            <Col span={12}>
                                 <DatePickerCustom
                                     format="DD/MM/YYYY"
                                     placeholder="dd/mm/yyyy"
@@ -343,7 +337,7 @@ const User = () => {
                         </Row>
                     </Form.Item>
                     <Form.Item label="Ngày Nghỉ Việc" name="validDay">
-                        <Row gutter={20}>
+                        <Row gutter={30}>
                             <Col span={12}>
                                 <DatePickerCustom
                                     format="DD/MM/YYYY"
@@ -355,7 +349,7 @@ const User = () => {
                                     }
                                 />
                             </Col>
-                            <Col span={12} className="text-right">
+                            <Col span={12}>
                                 <DatePickerCustom
                                     format="DD/MM/YYYY"
                                     placeholder="dd/mm/yyyy"
@@ -368,15 +362,11 @@ const User = () => {
                             </Col>
                         </Row>
                     </Form.Item>
-                    <div className="form-cus_btn">
-                        <Button
-                            type="primary"
-                            htmlType="submit"
-                            className="btn-submit"
-                        >
+                    <Form.Item>
+                        <Button type="primary" htmlType="submit">
                             Tìm Kiếm
                         </Button>
-                    </div>
+                    </Form.Item>
                 </Form>
             </ModalCustom>
         </div>

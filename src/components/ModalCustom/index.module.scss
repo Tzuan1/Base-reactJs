@@ -2,8 +2,7 @@
 
 .popupScreen {
     :global {
-        width: auto !important;
-        min-width: 520px;
+        width: auto;
         .ant-modal {
             &-content {
                 border-radius: 40px;
@@ -20,7 +19,7 @@
                 font-weight: 700;
                 color: rgba(21, 29, 72, 0.8);
                 img {
-                    width: 23px;
+                    width: 24px;
                     margin-right: 10px;
                 }
             }
