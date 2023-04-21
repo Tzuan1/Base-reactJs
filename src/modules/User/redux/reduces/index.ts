@@ -1,40 +1,27 @@
 import { createActions, createReducer } from "reduxsauce"
-import { IInitialTuitionReducer } from "@/modules/Tuition/shared/typings/tuition-type"
 import { copyDeep } from "@/shared"
-import { initialTutionCalendar } from "../../shared/constants"
+import { IInitialUserReducer } from "../../shared/typings/user-type"
+import { InitialUser } from "../../shared/constants"
 // create actions
 const { Types, Creators } = createActions({
-    tuitionCalendarSuccess: ["payload"],
-    tuitionCalendarError: ["payload"],
-    clearDataStore: [],
-    getListInvoice: ["payload"],
-    getListReceipt: ["payload"],
-    downloadInvoice: ["payload"],
-    downloadReceipt: ["payload"]
+    getListUser: ["payload"],
+    listUserSuccess: ["payload"],
+    listUserError: ["payload"]
 })
 
-export const tuitionCalendarTypes: any = Types
+export const listUserTypes: any = Types
 export default Creators
 
-const INITIAL_STATE: IInitialTuitionReducer = copyDeep(initialTutionCalendar)
+const INITIAL_STATE: IInitialUserReducer = copyDeep(InitialUser)
 
-const tuitionRequest = (state = INITIAL_STATE, { payload }: any) => {
+const listUserRequest = (state = INITIAL_STATE, { payload }: any) => {
     return {
         ...state,
-        isLoading: true,
         ...payload
     }
 }
 
-const tuitionSuccess = (state = INITIAL_STATE, { payload }: any) => {
-    return {
-        ...state,
-        isLoading: false,
-        ...payload
-    }
-}
-
-const tuitionError = (state = INITIAL_STATE, { payload }: any) => {
+const listUserSuccess = (state = INITIAL_STATE, { payload }: any) => {
     return {
         ...state,
         isLoading: false,
@@ -42,16 +29,21 @@ const tuitionError = (state = INITIAL_STATE, { payload }: any) => {
     }
 }
 
-const clearDataStore = () => {
-    return copyDeep(initialTutionCalendar)
+const listUserError = (state = INITIAL_STATE, { payload }: any) => {
+    return {
+        ...state,
+        isLoading: false,
+        ...payload
+    }
 }
 
-export const tuitionCalendarReducer = createReducer(INITIAL_STATE, {
-    [Types.TUITION_CALENDAR_ERROR]: tuitionError,
-    [Types.TUITION_CALENDAR_SUCCESS]: tuitionSuccess,
-    [Types.CLEAR_DATA_STORE]: clearDataStore,
-    [Types.GET_LIST_INVOICE]: tuitionRequest,
-    [Types.GET_LIST_RECEIPT]: tuitionRequest,
-    [Types.DOWNLOAD_INVOICE]: tuitionRequest,
-    [Types.DOWNLOAD_RECEIPT]: tuitionRequest
+// const clearDataStore = () => {
+//     return copyDeep(InitialUser)
+// }
+
+export const listUserReducer = createReducer(INITIAL_STATE, {
+    [Types.LIST_USER_ERROR]: listUserError,
+    [Types.LIST_USER_SUCCESS]: listUserSuccess,
+    [Types.GET_LIST_USER]: listUserRequest
+    // [Types.CLEAR_DATA_STORE]: clearDataStore
 })
