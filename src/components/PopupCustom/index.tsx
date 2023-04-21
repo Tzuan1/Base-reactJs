@@ -2,7 +2,9 @@ import React, { useState } from "react"
 import { Modal } from "antd"
 import ButtonCustom from "../ButtonCustom"
 
-const PopupCustom = ({ children }) => {
+import styles from "./index.module.scss"
+
+const PopupCustom = ({ className, textButton, titleModal, children }) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const showModal = () => {
         setIsModalOpen(true)
@@ -15,13 +17,15 @@ const PopupCustom = ({ children }) => {
     return (
         <>
             <ButtonCustom
-                text="Open Modal"
+                className={className}
+                text={textButton}
                 type="primary"
                 onClick={showModal}
             />
 
             <Modal
-                title="Basic Modal"
+                className={styles.popupScreen}
+                title={titleModal}
                 open={isModalOpen}
                 onCancel={handleCancel}
                 footer={null}

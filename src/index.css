@@ -234,13 +234,20 @@ body {
     align-items: center;
 }
 .form-cus .ant-select-selector,
-.form-cus .ant-picker {
+.form-cus .ant-picker,
+.form-cus input.ant-input {
     border: 1px solid #d0d5dd;
     box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
     border-radius: 8px !important;
     min-width: 200px;
     height: 38px !important;
     max-height: 38px;
+    width: 100%;
+}
+.form-cus .ant-input {
+    border: 1px solid #d0d5dd;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px !important;
 }
 .form-cus .ant-select-multiple .ant-select-selection-item {
     color: #fff;
@@ -282,4 +289,7 @@ body {
 .form-cus .form-cus_btn {
     text-align: center;
     margin-top: 32px;
+}
+.form-cus .textarea-cus .ant-row {
+    align-items: flex-start;
 }
