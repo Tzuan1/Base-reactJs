@@ -4,6 +4,8 @@ import { Button, Card, Col, Row } from "antd"
 import styles from "./index.module.scss"
 //img
 import IconEdit from "@/assets/icons/edit.png"
+import PopupCustom from "@/components/PopupCustom"
+import ChangePassword from "../ChangePassword"
 
 const UserInfo = () => {
     useEffect(() => {}, [])
@@ -15,7 +17,14 @@ const UserInfo = () => {
             bordered={false}
         >
             <div className="info_action">
-                <Button className="info_btn">Change Password</Button>
+                {/* <Button className="info_btn">Change Password</Button> */}
+                <PopupCustom
+                    className="info_btn"
+                    textButton="Change Password"
+                    titleModal="Thay Đổi Mật Khẩu"
+                >
+                    <ChangePassword />
+                </PopupCustom>
                 <Button className="info_icon">
                     <img src={IconEdit} alt="" className="" />
                 </Button>
