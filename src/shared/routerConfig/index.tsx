@@ -18,6 +18,7 @@ const TestComponents = lazy(() => import("@/modules/TestComponents"))
 const DashBoard = lazy(() => import("@/modules/DashBoard"))
 const Projects = lazy(() => import("@/modules/Projects"))
 const User = lazy(() => import("@/modules/User"))
+const UserDetail = lazy(() => import("@/modules/UserDetail"))
 
 const routerDefine: IRouter[] = [
     {
@@ -48,6 +49,14 @@ const routerDefine: IRouter[] = [
         sideMenu: true,
         title: "Nhân sự",
         logo: logoUser
+    },
+    {
+        path: PATH_ROUTES.USER_DETAIL,
+        exact: true,
+        component: UserDetail,
+        isAuth: false,
+        layout: Layout,
+        sideMenu: false
     },
     {
         path: PATH_ROUTES.LOGIN,
