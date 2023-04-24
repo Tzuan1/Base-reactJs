@@ -277,10 +277,14 @@ body {
     font-weight: 600;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    padding: 8px 10px;
+    padding: 8px 15px;
     height: auto;
     border: 0;
     transition: 0.3s;
+}
+.form-cus .btn-submit:focus {
+    border-color: rgba(215, 72, 27, 0.8);
+    background: rgba(215, 72, 27, 0.8);
 }
 .form-cus .btn-submit:hover {
     transform: scale(1.1);
