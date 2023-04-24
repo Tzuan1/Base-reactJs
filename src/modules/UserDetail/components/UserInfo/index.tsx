@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Button, Card, Col, Row } from "antd"
 
 import styles from "./index.module.scss"
@@ -6,10 +6,12 @@ import styles from "./index.module.scss"
 import IconEdit from "@/assets/icons/edit.png"
 import PopupCustom from "@/components/PopupCustom"
 import ChangePassword from "../ChangePassword"
+import EditUser from "../EditUser"
+import ModalCustom from "@/components/ModalCustom"
 
 const UserInfo = () => {
     useEffect(() => {}, [])
-
+    const [modalOpen, setModalOpen] = useState<boolean>(false)
     return (
         <Card
             title="Thông Tin Nhân Viên"
@@ -17,7 +19,6 @@ const UserInfo = () => {
             bordered={false}
         >
             <div className="info_action">
-                {/* <Button className="info_btn">Change Password</Button> */}
                 <PopupCustom
                     className="info_btn"
                     textButton="Change Password"
@@ -25,9 +26,21 @@ const UserInfo = () => {
                 >
                     <ChangePassword />
                 </PopupCustom>
-                <Button className="info_icon">
+                <Button
+                    className="info_icon"
+                    onClick={() => setModalOpen(true)}
+                >
                     <img src={IconEdit} alt="" className="" />
                 </Button>
+                <ModalCustom
+                    open={modalOpen}
+                    maskClosable={true}
+                    handleCancel={() => setModalOpen(false)}
+                    className={styles.popupFilter}
+                    title="Nhân Viên"
+                >
+                    <EditUser />
+                </ModalCustom>
             </div>
             <div className="info_content">
                 <Row gutter={20}>
