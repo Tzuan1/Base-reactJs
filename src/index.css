@@ -168,7 +168,7 @@ body {
     border-radius: 20px 20px 0 0;
 }
 .card-common .chart-cus {
-    height: 220px;
+    height: 220px !important;
 }
 .ant-card-head-title {
     font-weight: 600;
@@ -292,4 +292,64 @@ body {
 }
 .form-cus .textarea-cus .ant-row {
     align-items: flex-start;
+}
+.info {
+    margin-top: 2px;
+}
+.info_head {
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+    padding: 12px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0px 4px 20px rgba(238, 238, 238, 0.501967);
+}
+.info_head .name {
+    color: #151d48;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+.info_head .label {
+    color: #fff;
+    font-weight: 500;
+    font-size: 12px;
+    background-color: #f4c22b;
+    border-radius: 20px;
+    padding: 3px 6px 1px;
+    text-transform: uppercase;
+    min-width: 40px;
+    margin-left: 3px;
+    display: inline-block;
+}
+.info_container {
+    padding: 20px 10px;
+}
+.info_content {
+    font-size: 16px;
+    font-weight: 600;
+}
+.info .ant-card-head-title {
+    font-size: 19px;
+    color: #151d48;
+}
+.info_content .label {
+    font-size: 14px;
+    font-weight: 400;
+}
+.info_content .mb {
+    margin-bottom: 16px;
+}
+.info_status {
+    font-weight: 500;
+    padding: 5px 10px;
+    display: inline-block;
+    min-width: 100px;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 15px;
+    color: #fff;
+}
+.info_status.dark {
+    background-color: #737791;
 }

@@ -1,0 +1,10 @@
+@import "@/assets/styles/variables";
+
+.projects {
+    :global {
+        margin-top: 20px;
+        .ant-card-body {
+            padding: 0;
+        }
+    }
+}
