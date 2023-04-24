@@ -48,6 +48,7 @@ const User = () => {
 
     const dataListUser = useSelector((state: RootStateOrAny) => state.listUser)
     const [modalOpen, setModalOpen] = useState<boolean>(false)
+    const [btnAddUser, setBtnAddUser] = useState<boolean>(false)
     const pagination = {
         current: dataListUser.pageIndex,
         pageSize: dataListUser.listUser.data?.per_page,
@@ -104,6 +105,14 @@ const User = () => {
     }
 
     const onChangeTab = (key: string) => {
+        if (key === keyUserTab.Dashboard) {
+            setBtnAddUser(false)
+        } else {
+            hideAddUser()
+            setBtnAddUser(true)
+        }
+
+        localStorage.setItem("statusUserKey", checkTagsUser(key).toString())
         history.push({
             pathname: PATH_ROUTES.USER,
             search: `?tab=${key}`
@@ -134,6 +143,11 @@ const User = () => {
     const showAddUser = () => {
         document.getElementById("user")?.classList.toggle("active")
         document.getElementById("btn-add")?.classList.toggle("active")
+    }
+
+    const hideAddUser = () => {
+        document.getElementById("user")?.classList.remove("active")
+        document.getElementById("btn-add")?.classList.remove("active")
     }
     // const listSelectDepartment = useMemo(() => {})
 
@@ -279,13 +293,6 @@ const User = () => {
                             onChange: onChangePagination
                         }}
                     />
-                    <Button
-                        id="btn-add"
-                        className="btn-add"
-                        onClick={() => showAddUser()}
-                    >
-                        +
-                    </Button>
                 </>
             )
         },
@@ -322,7 +329,6 @@ const User = () => {
                             onChange: onChangePagination
                         }}
                     />
-                    <Button className="btn-add">+</Button>
                 </>
             )
         },
@@ -357,7 +363,6 @@ const User = () => {
                             onChange: onChangePagination
                         }}
                     />
-                    <Button className="btn-add">+</Button>
                 </>
             )
         },
@@ -392,7 +397,6 @@ const User = () => {
                             onChange: onChangePagination
                         }}
                     />
-                    <Button className="btn-add">+</Button>
                 </>
             )
         }
@@ -407,6 +411,15 @@ const User = () => {
                 items={items}
                 onChange={onChangeTab}
             />
+            {btnAddUser && (
+                <Button
+                    id="btn-add"
+                    className="btn-add"
+                    onClick={() => showAddUser()}
+                >
+                    +
+                </Button>
+            )}
             <ModalCustom
                 open={modalOpen}
                 maskClosable={true}

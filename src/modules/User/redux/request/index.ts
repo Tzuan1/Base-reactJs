@@ -57,14 +57,24 @@ const listUserRequest = {
                 UserService.postUser,
                 payload
             )
+
+            const statusId = localStorage.getItem("statusUserKey")
             const { status } = res
             if (status === statusCode.ok) {
                 yield put({
                     type: popupTypes.HIDDEN_POPUP
                 })
-                NotificationCustom({
+                yield NotificationCustom({
                     type: typeNotification.success,
                     message: "Thêm Nhân Viên Thành Công"
+                })
+
+                yield put({
+                    type: listUserTypes.GET_LIST_USER,
+                    payload: {
+                        status: statusId,
+                        pageIndex: 1
+                    }
                 })
 
                 return
