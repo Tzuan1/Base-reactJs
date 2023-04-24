@@ -1,4 +1,4 @@
-import { IResponeApi } from "@/@type"
+import { IResponseApi } from "@/@type"
 import { call, put } from "redux-saga/effects"
 import TuitionService from "@/modules/Tuition/services/api"
 import { statusCode } from "@/shared/constants"
@@ -7,7 +7,7 @@ import { tuitionCalendarTypes } from "../reduces"
 const TuitionRequest = {
     *getListInvoice({ payload }) {
         try {
-            const res: IResponeApi = yield call<any>(
+            const res: IResponseApi = yield call<any>(
                 TuitionService.getListInvoice,
                 payload
             )
@@ -29,7 +29,7 @@ const TuitionRequest = {
     },
     *getListReceipt({ payload }) {
         try {
-            const res: IResponeApi = yield call<any>(
+            const res: IResponseApi = yield call<any>(
                 TuitionService.getListReceipt,
                 payload
             )
@@ -52,7 +52,7 @@ const TuitionRequest = {
     *downloadInvoicePdf({ payload }) {
         const { invoice_main_no, callback }: any = payload
         try {
-            const res: IResponeApi = yield call<any>(
+            const res: IResponseApi = yield call<any>(
                 TuitionService.downloadInvoicePdf,
                 { invoice_main_no }
             )
@@ -74,7 +74,7 @@ const TuitionRequest = {
     *downloadReceiptPdf({ payload }) {
         const { receipt_no, callback }: any = payload
         try {
-            const res: IResponeApi = yield call<any>(
+            const res: IResponseApi = yield call<any>(
                 TuitionService.downloadReceiptPdf,
                 { receipt_no }
             )
