@@ -52,6 +52,7 @@ const PopupCommon = () => {
             title={params?.titleModal}
             onOk={handleOk}
             onCancel={handleCancel}
+            maskClosable={false}
             footer={null}
         >
             {renderPopup()}

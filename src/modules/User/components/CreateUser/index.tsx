@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React from "react"
 import moment from "moment"
 
 // components
@@ -7,41 +7,22 @@ import DatePickerCustom from "@/components/DatePickerCustom"
 import InputCustom from "@/components/InputCustom"
 
 import { Button, Form, Col, Row } from "antd"
-import { useDispatch } from "react-redux"
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux"
 import { listUserTypes } from "../../redux/reduces"
 import { listSelectGender, listSelectLevel } from "../../shared/constants"
 
 const CreateUser = () => {
     const dispatch = useDispatch()
     const [form] = Form.useForm()
-    const listSelectDepartment = useMemo(() => {
-        return [
-            {
-                value: 1,
-                label: "D1"
-            },
-            {
-                value: 2,
-                label: "D2"
-            }
-        ]
-    }, [])
-    const listSelectPosition = useMemo(() => {
-        return [
-            {
-                value: 1,
-                label: "SE"
-            },
-            {
-                value: 2,
-                label: "PM"
-            },
-            {
-                value: 3,
-                label: "BRSE"
-            }
-        ]
-    }, [])
+
+    const listDepartmentAndPosition = useSelector(
+        (state: RootStateOrAny) => state.departmentAndPosition
+    )
+    console.log(listDepartmentAndPosition)
+    const listSelectDepartment =
+        listDepartmentAndPosition.listDepartment.listDepartment
+    const listSelectPosition =
+        listDepartmentAndPosition.ListPosition.ListPosition
 
     return (
         <Form

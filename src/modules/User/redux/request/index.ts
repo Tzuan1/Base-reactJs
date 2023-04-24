@@ -69,6 +69,9 @@ const listUserRequest = {
                     message: "Thêm Nhân Viên Thành Công"
                 })
 
+                document.getElementById("user")?.classList.toggle("active")
+                document.getElementById("btn-add")?.classList.toggle("active")
+
                 yield put({
                     type: listUserTypes.GET_LIST_USER,
                     payload: {
