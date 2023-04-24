@@ -66,7 +66,11 @@ const listUserRequest = {
                     type: typeNotification.success,
                     message: "Thêm Nhân Viên Thành Công"
                 })
+
+                return
             }
+
+            throw new Error()
         } catch (e) {
             NotificationCustom({
                 type: typeNotification.error,

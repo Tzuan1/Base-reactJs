@@ -64,17 +64,6 @@ const CreateUser = () => {
                         descriptions: value.note
                     }
                 })
-                // const tuandz = {
-                //     full_name: value.fullName,
-                //     email: value.email,
-                //     department_id: value.department,
-                //     position_id: value.position,
-                //     level: value.level,
-                //     start_date: moment(value.validay).format("YYYY-MM-DD"),
-                //     gender: value.gender,
-                //     descriptions: value.note
-                // }
-                // console.log(tuandz)
             }}
         >
             <InputCustom
