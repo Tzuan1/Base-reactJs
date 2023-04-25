@@ -46,6 +46,7 @@ type ITypeInput = {
     textarea: string
     number: string
     password: string
+    search: string
 }
 
 type ITypeNotification = {

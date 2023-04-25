@@ -7,5 +7,6 @@ export const PATH_ROUTES = {
     TEST_COMPONENTS: "/TestComponents",
     PROJECTS: "/projects",
     USER: "/user",
-    USER_DETAIL: "/user-detail"
+    USER_DETAIL: "/user-detail",
+    CUSTOMER: "/customer"
 }

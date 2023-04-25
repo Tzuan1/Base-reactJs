@@ -37,7 +37,8 @@ const typeInputCustom: ITypeInput = {
     select: "select",
     textarea: "textarea",
     number: "number",
-    password: "password"
+    password: "password",
+    search: "search"
 }
 
 const typeNotification: ITypeNotification = {

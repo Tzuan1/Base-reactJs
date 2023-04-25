@@ -7,6 +7,7 @@ import styles from "./index.module.scss"
 import { listNamePopup } from "@/shared/constants"
 import { ListNamePopup } from "@/shared/enum"
 import CreateUser from "@/modules/User/components/CreateUser"
+import CreateCustomer from "@/modules/Customer/components/CreateCustomer"
 
 const PopupCommon = () => {
     const dispatch = useDispatch()
@@ -18,7 +19,10 @@ const PopupCommon = () => {
         if (typePopup === ListNamePopup.popupCreateUser) {
             return <CreateUser />
         }
-        return <h3>hello</h3>
+        if (typePopup === ListNamePopup.popupCreateCustomer) {
+            return <CreateCustomer />
+        }
+        return ""
     }
 
     const handleOk = () => {
