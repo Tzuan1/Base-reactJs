@@ -8,6 +8,8 @@ import { listNamePopup } from "@/shared/constants"
 import { ListNamePopup } from "@/shared/enum"
 import CreateUser from "@/modules/User/components/CreateUser"
 import CreateCustomer from "@/modules/Customer/components/CreateCustomer"
+import ChangePassword from "@/modules/UserDetail/components/ChangePassword"
+import EditUser from "@/modules/UserDetail/components/EditUser"
 
 const PopupCommon = () => {
     const dispatch = useDispatch()
@@ -18,6 +20,12 @@ const PopupCommon = () => {
     const renderPopup = () => {
         if (typePopup === ListNamePopup.popupCreateUser) {
             return <CreateUser />
+        }
+        if (typePopup === ListNamePopup.popupChangePassword) {
+            return <ChangePassword />
+        }
+        if (typePopup === ListNamePopup.popupEditUserDetail) {
+            return <EditUser />
         }
         if (typePopup === ListNamePopup.popupCreateCustomer) {
             return <CreateCustomer />
@@ -42,6 +50,15 @@ const PopupCommon = () => {
         }
         if (typePopup === listNamePopup.popupClassReportDetail) {
             return styles.reportDetailModal
+        }
+        if (typePopup === listNamePopup.popupCreateUser) {
+            return styles.popupScreen
+        }
+        if (typePopup === listNamePopup.popupChangePassword) {
+            return styles.popupScreen
+        }
+        if (typePopup === listNamePopup.popupEditUserDetail) {
+            return styles.popupFilter
         }
         return ""
     }

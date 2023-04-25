@@ -18,7 +18,6 @@ const CreateUser = () => {
     const listDepartmentAndPosition = useSelector(
         (state: RootStateOrAny) => state.departmentAndPosition
     )
-    console.log(listDepartmentAndPosition)
     const listSelectDepartment =
         listDepartmentAndPosition.listDepartment.listDepartment
     const listSelectPosition =

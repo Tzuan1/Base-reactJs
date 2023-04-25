@@ -1,98 +1,62 @@
 import { IResponseApi } from "@/@type"
 import { call, put } from "redux-saga/effects"
-import TuitionService from "@/modules/Tuition/services/api"
-import { statusCode } from "@/shared/constants"
-import { tuitionCalendarTypes } from "../reduces"
+import { statusCode, typeNotification } from "@/shared/constants"
+import userDetailService from "../../services/api"
+import { userDetailTypes } from "../reduces"
+import { popupTypes } from "@/redux/reduces/popupReducer"
+import { NotificationCustom } from "@/shared/function"
 
-const TuitionRequest = {
-    *getListInvoice({ payload }) {
+const userDetailRequest = {
+    *getUserDetail({ payload }) {
         try {
             const res: IResponseApi = yield call<any>(
-                TuitionService.getListInvoice,
+                userDetailService.getUserDetail,
                 payload
             )
             const { data, status } = res
             if (status === statusCode.ok) {
                 yield put({
-                    type: tuitionCalendarTypes.TUITION_CALENDAR_SUCCESS,
+                    type: userDetailTypes.USER_DETAIL_SUCCESS,
                     payload: {
-                        listInvoice: data
+                        dataUser: data
                     }
                 })
             }
         } catch (e) {
             yield put({
-                type: tuitionCalendarTypes.TUITION_CALENDAR_ERROR,
+                type: userDetailTypes.USER_DETAIL_ERROR,
                 payload: {}
             })
         }
     },
-    *getListReceipt({ payload }) {
+    *changePassword({ payload }) {
         try {
             const res: IResponseApi = yield call<any>(
-                TuitionService.getListReceipt,
+                userDetailService.postResetPassword,
                 payload
             )
-            const { data, status } = res
+
+            const { status } = res
             if (status === statusCode.ok) {
                 yield put({
-                    type: tuitionCalendarTypes.TUITION_CALENDAR_SUCCESS,
-                    payload: {
-                        listReceipt: data
-                    }
+                    type: popupTypes.HIDDEN_POPUP
                 })
-            }
-        } catch (e) {
-            yield put({
-                type: tuitionCalendarTypes.TUITION_CALENDAR_ERROR,
-                payload: {}
-            })
-        }
-    },
-    *downloadInvoicePdf({ payload }) {
-        const { invoice_main_no, callback }: any = payload
-        try {
-            const res: IResponseApi = yield call<any>(
-                TuitionService.downloadInvoicePdf,
-                { invoice_main_no }
-            )
-            const { data, status } = res
-            if (status === statusCode.ok) {
-                callback(data)
-                yield put({
-                    type: tuitionCalendarTypes.TUITION_CALENDAR_SUCCESS,
-                    payload: {}
+                yield NotificationCustom({
+                    type: typeNotification.success,
+                    message: "Đổi Mật Khẩu Thành Công"
                 })
+
+                return
             }
+
+            throw new Error()
         } catch (e) {
-            yield put({
-                type: tuitionCalendarTypes.TUITION_CALENDAR_ERROR,
-                payload: {}
-            })
-        }
-    },
-    *downloadReceiptPdf({ payload }) {
-        const { receipt_no, callback }: any = payload
-        try {
-            const res: IResponseApi = yield call<any>(
-                TuitionService.downloadReceiptPdf,
-                { receipt_no }
-            )
-            const { data, status } = res
-            if (status === statusCode.ok) {
-                callback(data.data)
-                yield put({
-                    type: tuitionCalendarTypes.TUITION_CALENDAR_SUCCESS,
-                    payload: {}
-                })
-            }
-        } catch (e) {
-            yield put({
-                type: tuitionCalendarTypes.TUITION_CALENDAR_ERROR,
-                payload: {}
+            NotificationCustom({
+                type: typeNotification.error,
+                message: "Đổi Mật Khẩu Thất Bại"
             })
         }
     }
 }
 
-export default TuitionRequest
+export default userDetailRequest

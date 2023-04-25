@@ -297,7 +297,10 @@ const YYYYMMDDTHHmmssSSST: string = "YYYY-MM-DDTHH:mm:ss.SSSZ"
 
 const listNamePopup: ITypeListPopup = {
     popupCreateMessageContact: "popupCreateMessageContact",
-    popupClassReportDetail: "popupClassReportDetail"
+    popupClassReportDetail: "popupClassReportDetail",
+    popupCreateUser: "popupCreateUser",
+    popupChangePassword: "popupChangePassword",
+    popupEditUserDetail: "popupEditUserDetail"
 }
 
 const roleAccount: ITypeRoleUser = {

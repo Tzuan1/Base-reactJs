@@ -6,6 +6,7 @@ import {
 } from "@/shared/function/IFuntions"
 import { regex } from "@/shared/regex"
 import { listKeyCodeNumber } from "../constants"
+import { keyUserTab, statusWorkUser } from "@/modules/User/shared/constants"
 
 const clearFormatMoney = (value: string) => {
     if (value) {
@@ -365,6 +366,61 @@ const getQueryLocation = (key: string) => {
     return searchParams.get(key)
 }
 
+const checkLevelUser = (id: number) => {
+    switch (id) {
+        case 1:
+            return "Intern"
+        case 2:
+            return "Fresher"
+        case 3:
+            return "Middle"
+        case 4:
+            return "Middle"
+        case 5:
+            return "Senior"
+        default:
+            return "Intern"
+    }
+}
+
+const checkStatusUser = (status: number) => {
+    switch (status) {
+        case statusWorkUser.Onboarding: {
+            return keyUserTab.Onboarding
+        }
+        case statusWorkUser.Waiting: {
+            return keyUserTab.Waiting
+        }
+        case statusWorkUser.Retired: {
+            return keyUserTab.Retired
+        }
+        default:
+            return ""
+    }
+}
+
+const getColorStatus = (status: string) => {
+    let color = "success"
+    switch (status) {
+        case "Onboarding": {
+            color = "success"
+            return color
+        }
+        case "Waiting": {
+            color = "yellow"
+            return color
+        }
+        case "Retired": {
+            color = "red"
+            return color
+        }
+        default: {
+            color = "success"
+            return color
+        }
+    }
+}
+
 export {
     autoTrimDebounceInput,
     clearFormatMoney,
@@ -393,5 +449,8 @@ export {
     preventKeyMobilePhone,
     preventKeyZipcode,
     objectHasKey,
-    getQueryLocation
+    getQueryLocation,
+    checkLevelUser,
+    checkStatusUser,
+    getColorStatus
 }

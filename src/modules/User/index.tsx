@@ -26,10 +26,16 @@ import {
 } from "./shared/constants"
 import { useHistory } from "react-router"
 import { PATH_ROUTES } from "@/shared/routerConfig/PathRoutes"
-import { getQueryLocation } from "@/shared/function"
+import {
+    checkStatusUser,
+    getColorStatus,
+    getQueryLocation
+} from "@/shared/function"
 import ButtonCustom from "@/components/ButtonCustom"
 import { popupTypes } from "@/redux/reduces/popupReducer"
 import { ListNamePopup } from "@/shared/enum"
+import { Link } from "react-router-dom"
+// import { userDetailTypes } from "../UserDetail/redux/reduces"
 const Dashboard = lazy(() => import("@/modules/User/components/Dashboard"))
 
 // type
@@ -69,7 +75,8 @@ const User = () => {
             listUsers?.map((user, index) => {
                 return {
                     key: index,
-                    id: user.code,
+                    id: user.id,
+                    mnv: user.code,
                     name: user.full_name,
                     email: user.email,
                     department: user.department.name,
@@ -151,21 +158,6 @@ const User = () => {
     }
     // const listSelectDepartment = useMemo(() => {})
 
-    const checkStatusUser = useCallback((status: number) => {
-        switch (status) {
-            case statusWorkUser.Onboarding: {
-                return keyUserTab.Onboarding
-            }
-            case statusWorkUser.Waiting: {
-                return keyUserTab.Waiting
-            }
-            case statusWorkUser.Retired: {
-                return keyUserTab.Retired
-            }
-            default:
-                return ""
-        }
-    }, [])
     const checkTagsUser = useCallback((status: string) => {
         switch (status) {
             case keyUserTab.Dashboard: {
@@ -188,40 +180,24 @@ const User = () => {
         }
     }, [])
 
-    const getColorStatus = useCallback(status => {
-        let color = "success"
-        switch (status) {
-            case "Onboarding": {
-                color = "success"
-                break
-            }
-            case "Waiting": {
-                color = "yellow"
-                break
-            }
-            case "Retired": {
-                color = "red"
-                break
-            }
-            default: {
-                color = "success"
-                break
-            }
-        }
-        return (
-            <Button type="primary" className={color}>
-                {status}
-            </Button>
-        )
-    }, [])
-
     const columns = useMemo(() => {
         return [
             {
                 title: "Mã Nhân Viên",
-                key: "id",
-                dataIndex: "id",
-                render: (text: string) => <a className="link">{text}</a>
+                key: "mnv",
+                dataIndex: "mnv",
+                render: (text: string, detail) => (
+                    <Link
+                        className="link"
+                        key={detail.id}
+                        to={PATH_ROUTES.USER_DETAIL.replace(
+                            ":id",
+                            detail.id?.toString() || ""
+                        )}
+                    >
+                        {text}
+                    </Link>
+                )
             },
             {
                 title: "Tên Nhân Viên",
@@ -252,7 +228,18 @@ const User = () => {
                 title: "Trạng Thái",
                 key: "status",
                 dataIndex: "status",
-                render: (status: string) => <>{getColorStatus(status)}</>
+                render: (status: string) => (
+                    <>
+                        {
+                            <Button
+                                type="primary"
+                                className={getColorStatus(status)}
+                            >
+                                {status}
+                            </Button>
+                        }
+                    </>
+                )
             }
         ]
     }, [])

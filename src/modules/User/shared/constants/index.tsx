@@ -93,6 +93,21 @@ const listSelectLevel = [
     }
 ]
 
+const listSelectStatus = [
+    {
+        value: 1,
+        label: "Onboarding"
+    },
+    {
+        value: 2,
+        label: "Waiting"
+    },
+    {
+        value: 3,
+        label: "Retired"
+    }
+]
+
 export {
     InitialUser,
     statusWorkUser,
@@ -100,5 +115,6 @@ export {
     listSelectDepartment,
     listSelectPosition,
     listSelectGender,
-    listSelectLevel
+    listSelectLevel,
+    listSelectStatus
 }
