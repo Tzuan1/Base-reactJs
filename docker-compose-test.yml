@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+    frontend:
+        container_name: hrm-fe
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        volumes:
+            - .:/app
+        ports:
+            - "5678:9999"
