@@ -6,6 +6,14 @@ const UserService = {
         const { status, pageIndex } = payload
         let url = `api/users?status=${status}&page=${pageIndex}`
         return apiServices.get(url)
+    },
+    getListCount() {
+        let url = `api/users/count`
+        return apiServices.get(url)
+    },
+    postUser(payload: ITypeParamsGetListUser) {
+        let url = `api/users`
+        return apiServices.post(url, payload)
     }
 }
 

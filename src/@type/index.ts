@@ -14,7 +14,7 @@ type IRouter = {
     logo?: string
 }
 
-type IResponeApi = {
+type IResponseApi = {
     config: any
     data: any
     headers: any
@@ -33,4 +33,4 @@ type ITypeParamsSelectCustom = {
     fieldNames?: any
 }
 
-export type { IRouter, IResponeApi, ITypeParamsSelectCustom }
+export type { IRouter, IResponseApi, ITypeParamsSelectCustom }

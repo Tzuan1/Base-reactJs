@@ -29,6 +29,13 @@ const SideMenu = () => {
         if (titleDefault && titleDefault.title) {
             handleClickSideMenu({ titlePage: titleDefault.title })
         }
+
+        dispatch({
+            type: layoutActionTypes.SET_LIST_DEPARTMENT
+        })
+        dispatch({
+            type: layoutActionTypes.SET_LIST_POSITION
+        })
     }, [])
 
     const handleClickSideMenu = useCallback(

@@ -1,12 +1,17 @@
 import {
     IInitialUserReducer,
     IStatusWorkUser,
-    IskeyUserTabs
+    IsKeyUserTabs
 } from "../typings/user-type"
 
 const InitialUser: IInitialUserReducer = {
     isLoading: false,
-    listUser: {}
+    listUser: {},
+    newUser: {},
+    countActiveUser: 0,
+    countWaitUser: 0,
+    countAllUser: 0,
+    countOffUser: 0
 }
 
 const statusWorkUser: IStatusWorkUser = {
@@ -16,7 +21,7 @@ const statusWorkUser: IStatusWorkUser = {
     Retired: 3
 }
 
-const keyUserTab: IskeyUserTabs = {
+const keyUserTab: IsKeyUserTabs = {
     Dashboard: "Dashboard",
     All: "All",
     Onboarding: "Onboarding",
@@ -50,10 +55,50 @@ const listSelectDepartment = [
     }
 ]
 
+const listSelectGender = [
+    {
+        value: 1,
+        label: "Male"
+    },
+    {
+        value: 2,
+        label: "Female"
+    },
+    {
+        value: 3,
+        label: "Other"
+    }
+]
+
+const listSelectLevel = [
+    {
+        value: 1,
+        label: "Intern"
+    },
+    {
+        value: 2,
+        label: "Fresher"
+    },
+    {
+        value: 3,
+        label: "Junior"
+    },
+    {
+        value: 4,
+        label: "Middle"
+    },
+    {
+        value: 5,
+        label: "Senior"
+    }
+]
+
 export {
     InitialUser,
     statusWorkUser,
     keyUserTab,
     listSelectDepartment,
-    listSelectPosition
+    listSelectPosition,
+    listSelectGender,
+    listSelectLevel
 }

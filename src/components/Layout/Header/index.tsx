@@ -10,6 +10,7 @@ const HeaderCompany = () => {
     const layoutGlobal = useSelector(
         (state: RootStateOrAny) => state.layoutGlobal
     )
+
     return (
         <div className={styles.headerCommon}>
             <h2 className="title">{layoutGlobal.titlePage}</h2>

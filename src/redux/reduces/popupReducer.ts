@@ -18,7 +18,11 @@ const showPopupRequest = (state = INITIAL_STATE, { payload }: any) => {
     return {
         ...state,
         isShow: true,
-        typePopup: payload.typePopup
+        typePopup: payload.typePopup,
+        params: {
+            ...state.params,
+            ...payload.params
+        }
     }
 }
 

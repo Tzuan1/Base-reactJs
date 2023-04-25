@@ -15,6 +15,7 @@ const { Option } = Select
 type IPropsInput = {
     classCustomLabel?: string
     classCustomInput?: string
+    classNameFormItem?: string
     disabled?: boolean
     errSizeImage?: string
     formatValue?: any
@@ -46,6 +47,7 @@ type IPropsInput = {
 const InputCustom = ({
     classCustomLabel,
     classCustomInput,
+    classNameFormItem,
     disabled,
     title,
     typeInput,
@@ -244,7 +246,7 @@ const InputCustom = ({
             }
             name={name}
             rules={rules}
-            className={listClassInput()}
+            className={`${listClassInput()} ${classNameFormItem}`}
             colon={false}
             labelAlign={"left"}
             required={required}

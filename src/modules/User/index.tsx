@@ -9,7 +9,6 @@ import IconFilter from "@/assets/icons/filter-bold.png"
 
 // components
 import TableCustom from "@/components/TableCustom"
-import CreateUser from "./components/CreateUser"
 import TabsCustom from "@/components/TabsCustom"
 import InputCustom from "@/components/InputCustom"
 import ModalCustom from "@/components/ModalCustom"
@@ -17,7 +16,6 @@ import SelectCustom from "@/components/SelectCustom"
 import DatePickerCustom from "@/components/DatePickerCustom"
 
 import { Button, Form, Col, Row, Select, Space } from "antd"
-import PopupCustom from "@/components/PopupCustom"
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux"
 import { listUserTypes } from "./redux/reduces"
 import {
@@ -29,6 +27,9 @@ import {
 import { useHistory } from "react-router"
 import { PATH_ROUTES } from "@/shared/routerConfig/PathRoutes"
 import { getQueryLocation } from "@/shared/function"
+import ButtonCustom from "@/components/ButtonCustom"
+import { popupTypes } from "@/redux/reduces/popupReducer"
+import { ListNamePopup } from "@/shared/enum"
 const Dashboard = lazy(() => import("@/modules/User/components/Dashboard"))
 
 // type
@@ -36,7 +37,6 @@ type ITypeTabs = {
     key?: number
     label?: string
     children?: string
-    count?: number
     items?: any
 }
 
@@ -48,7 +48,7 @@ const User = () => {
 
     const dataListUser = useSelector((state: RootStateOrAny) => state.listUser)
     const [modalOpen, setModalOpen] = useState<boolean>(false)
-    const count = 10
+    const [btnAddUser, setBtnAddUser] = useState<boolean>(false)
     const pagination = {
         current: dataListUser.pageIndex,
         pageSize: dataListUser.listUser.data?.per_page,
@@ -59,11 +59,7 @@ const User = () => {
 
     useEffect(() => {
         dispatch({
-            type: listUserTypes.GET_LIST_USER,
-            payload: {
-                status: 0,
-                pageIndex: 1
-            }
+            type: listUserTypes.GET_LIST_COUNT
         })
     }, [])
 
@@ -85,6 +81,19 @@ const User = () => {
         )
     }, [dataListUser])
 
+    const togglePopupCreateUser = () => {
+        dispatch({
+            type: popupTypes.SHOW_POPUP,
+            payload: {
+                typePopup: ListNamePopup.popupCreateUser,
+                params: {
+                    className: "popupScreen",
+                    titleModal: "Thêm Nhân Viên"
+                }
+            }
+        })
+    }
+
     const onChangePagination = numberPage => {
         dispatch({
             type: listUserTypes.GET_LIST_USER,
@@ -96,6 +105,14 @@ const User = () => {
     }
 
     const onChangeTab = (key: string) => {
+        if (key === keyUserTab.Dashboard) {
+            setBtnAddUser(false)
+        } else {
+            hideAddUser()
+            setBtnAddUser(true)
+        }
+
+        localStorage.setItem("statusUserKey", checkTagsUser(key).toString())
         history.push({
             pathname: PATH_ROUTES.USER,
             search: `?tab=${key}`
@@ -126,6 +143,11 @@ const User = () => {
     const showAddUser = () => {
         document.getElementById("user")?.classList.toggle("active")
         document.getElementById("btn-add")?.classList.toggle("active")
+    }
+
+    const hideAddUser = () => {
+        document.getElementById("user")?.classList.remove("active")
+        document.getElementById("btn-add")?.classList.remove("active")
     }
     // const listSelectDepartment = useMemo(() => {})
 
@@ -244,7 +266,8 @@ const User = () => {
             key: keyUserTab.All,
             label: (
                 <p>
-                    All <span className="count">{count}</span>
+                    All{" "}
+                    <span className="count">{dataListUser.countAllUser}</span>
                 </p>
             ),
             children: (
@@ -270,13 +293,6 @@ const User = () => {
                             onChange: onChangePagination
                         }}
                     />
-                    <Button
-                        id="btn-add"
-                        className="btn-add"
-                        onClick={() => showAddUser()}
-                    >
-                        +
-                    </Button>
                 </>
             )
         },
@@ -284,7 +300,10 @@ const User = () => {
             key: keyUserTab.Onboarding,
             label: (
                 <p>
-                    Đang Làm Việc <span className="count">{count}</span>
+                    Đang Làm Việc{" "}
+                    <span className="count">
+                        {dataListUser.countActiveUser}
+                    </span>
                 </p>
             ),
             children: (
@@ -310,7 +329,6 @@ const User = () => {
                             onChange: onChangePagination
                         }}
                     />
-                    <Button className="btn-add">+</Button>
                 </>
             )
         },
@@ -318,7 +336,8 @@ const User = () => {
             key: keyUserTab.Waiting,
             label: (
                 <p>
-                    Đã Nghỉ Việc <span className="count">{count}</span>
+                    Đã Nghỉ Việc{" "}
+                    <span className="count">{dataListUser.countOffUser}</span>
                 </p>
             ),
             children: (
@@ -344,7 +363,6 @@ const User = () => {
                             onChange: onChangePagination
                         }}
                     />
-                    <Button className="btn-add">+</Button>
                 </>
             )
         },
@@ -352,7 +370,8 @@ const User = () => {
             key: keyUserTab.Retired,
             label: (
                 <p>
-                    Chờ Nhận Việc <span className="count">{count}</span>
+                    Chờ Nhận Việc{" "}
+                    <span className="count">{dataListUser.countWaitUser}</span>
                 </p>
             ),
             children: (
@@ -378,7 +397,6 @@ const User = () => {
                             onChange: onChangePagination
                         }}
                     />
-                    <Button className="btn-add">+</Button>
                 </>
             )
         }
@@ -393,6 +411,15 @@ const User = () => {
                 items={items}
                 onChange={onChangeTab}
             />
+            {btnAddUser && (
+                <Button
+                    id="btn-add"
+                    className="btn-add"
+                    onClick={() => showAddUser()}
+                >
+                    +
+                </Button>
+            )}
             <ModalCustom
                 open={modalOpen}
                 maskClosable={true}
@@ -540,13 +567,11 @@ const User = () => {
                 </Form>
             </ModalCustom>
             <div className="user-btn" id="user">
-                <PopupCustom
+                <ButtonCustom
                     className="user-btn_item add"
-                    textButton="Add"
-                    titleModal="Thêm Nhân Viên"
-                >
-                    <CreateUser />
-                </PopupCustom>
+                    text="Add"
+                    onClick={() => togglePopupCreateUser()}
+                />
                 <Button className="user-btn_item csv">CSV</Button>
             </div>
         </div>
