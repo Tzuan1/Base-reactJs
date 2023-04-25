@@ -1,13 +1,12 @@
 FROM node:16-alpine
 
-LABEL maintainer="hungnd@miichisoft.net"
-WORKDIR /var/www/frontend
+LABEL maintainer="Team HRM"
 
-ENV NODE_ENV=development
+WORKDIR /app
+COPY . /app
 
 RUN npm install -g npm@latest
 
-COPY . .
-EXPOSE 3000
+EXPOSE 9999
 
 CMD [ "sh", "-c", "npm install --quiet && npm start" ]
