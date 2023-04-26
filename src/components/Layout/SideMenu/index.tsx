@@ -55,25 +55,27 @@ const SideMenu = () => {
                 <img src={Logo} alt="via-learn" />
             </NavLink>
             <div className="menu-list">
-                {routerDefine.map((itemRouter, key) =>
-                    objectHasKey(itemRouter, "sideMenu") ? (
-                        <NavLink
-                            key={key}
-                            className="menu-item"
-                            to={itemRouter.path}
-                            exact={itemRouter.exact}
-                            activeClassName="item-selected"
-                            onClick={() =>
-                                handleClickSideMenu({
-                                    titlePage: itemRouter.title || ""
-                                })
-                            }
-                        >
-                            <img src={itemRouter.logo} />
-                            {itemRouter.title || ""}
-                        </NavLink>
-                    ) : null
-                )}
+                {routerDefine
+                    .filter((e: IRouter) => e.sideMenu)
+                    .map((itemRouter, key) =>
+                        objectHasKey(itemRouter, "sideMenu") ? (
+                            <NavLink
+                                key={key}
+                                className="menu-item"
+                                to={itemRouter.path}
+                                exact={itemRouter.exact}
+                                activeClassName="item-selected"
+                                onClick={() =>
+                                    handleClickSideMenu({
+                                        titlePage: itemRouter.title || ""
+                                    })
+                                }
+                            >
+                                <img src={itemRouter.logo} />
+                                {itemRouter.title || ""}
+                            </NavLink>
+                        ) : null
+                    )}
             </div>
         </div>
     )

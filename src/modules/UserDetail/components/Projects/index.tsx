@@ -135,7 +135,7 @@ const Projects = () => {
                             }
                         }
                         return (
-                            <Button type="primary" className={color}>
+                            <Button type="primary" className={color} key={tag}>
                                 {tag}
                             </Button>
                         )

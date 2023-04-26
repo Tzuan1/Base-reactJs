@@ -94,6 +94,9 @@ type ITypeRoleUser = {
 type ITypeListPopup = {
     popupCreateMessageContact: string
     popupClassReportDetail: string
+    popupCreateUser: string
+    popupChangePassword: string
+    popupEditUserDetail: string
 }
 
 type ITypePermissionRouteUser = {

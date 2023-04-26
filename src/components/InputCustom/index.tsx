@@ -44,6 +44,7 @@ type IPropsInput = {
     refPass?: any
     onSearch?: (value: any) => void
     enterButton?: boolean
+    defaultValue?: string
 }
 // input custom use all in project
 const InputCustom = ({
@@ -72,7 +73,8 @@ const InputCustom = ({
     onChangeRadio,
     refPass,
     onSearch,
-    enterButton
+    enterButton,
+    defaultValue
 }: IPropsInput) => {
     // list css custom label
     const listClassInput = () => {
@@ -162,6 +164,7 @@ const InputCustom = ({
                         placeholder={placeholder}
                         onChange={handleOnChange}
                         // onBlur={onBlur}
+                        defaultValue={defaultValue}
                     />
                 )
             case typeInputCustom.radio:
@@ -198,7 +201,7 @@ const InputCustom = ({
                 )
             case typeInputCustom.password:
                 return (
-                    <Input
+                    <Input.Password
                         placeholder={placeholder}
                         disabled={disabled}
                         className={classCustomInput}
@@ -213,6 +216,7 @@ const InputCustom = ({
                                 onKeyPress(e)
                             }
                         }}
+                        defaultValue={defaultValue}
                     />
                 )
             case typeInputCustom.search:
@@ -253,6 +257,7 @@ const InputCustom = ({
                             }
                         }}
                         ref={refPass ? refPass : null}
+                        defaultValue={defaultValue}
                     />
                 )
         }

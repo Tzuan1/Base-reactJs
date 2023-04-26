@@ -1,11 +1,7 @@
-import { IInitialTuitionReducer } from "@/modules/Tuition/shared/typings/tuition-type"
+import { IInitialUserDetailReducer } from "../typings/userDetail-type"
 
-const initialTutionCalendar: IInitialTuitionReducer = {
-    isLoading: false,
-    listInvoice: [],
-    listReceipt: [],
-    listDownloadInvoice: [],
-    listDownloadReceipt: []
+const IInitialUserDetail: IInitialUserDetailReducer = {
+    dataUser: {}
 }
 
-export { initialTutionCalendar }
+export { IInitialUserDetail }

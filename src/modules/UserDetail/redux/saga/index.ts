@@ -1,22 +1,14 @@
 import { takeLatest } from "redux-saga/effects"
-import { tuitionCalendarTypes } from "@/modules/Tuition/redux/reduces"
-import TuitionRequest from "@/modules/Tuition/redux/request/index"
+import { userDetailTypes } from "../reduces"
+import userDetailRequest from "../request"
 
-export const tuitionSaga = [
+export const userDetailSaga = [
     takeLatest(
-        tuitionCalendarTypes.GET_LIST_INVOICE,
-        TuitionRequest.getListInvoice
+        userDetailTypes.GET_USER_DETAIL,
+        userDetailRequest.getUserDetail
     ),
     takeLatest(
-        tuitionCalendarTypes.GET_LIST_RECEIPT,
-        TuitionRequest.getListReceipt
-    ),
-    takeLatest(
-        tuitionCalendarTypes.DOWNLOAD_INVOICE,
-        TuitionRequest.downloadInvoicePdf
-    ),
-    takeLatest(
-        tuitionCalendarTypes.DOWNLOAD_RECEIPT,
-        TuitionRequest.downloadReceiptPdf
+        userDetailTypes.CHANGE_PASSWORD,
+        userDetailRequest.changePassword
     )
 ]

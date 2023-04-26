@@ -97,13 +97,6 @@ const routerDefine: IRouter[] = [
         layout: Layout
     },
     {
-        path: PATH_ROUTES.USER,
-        exact: true,
-        component: User,
-        isAuth: false,
-        layout: Layout
-    },
-    {
         path: "*",
         exact: false,
         component: NoMatch
