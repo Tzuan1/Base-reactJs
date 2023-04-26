@@ -7,14 +7,17 @@ import DatePickerCustom from "@/components/DatePickerCustom"
 import InputCustom from "@/components/InputCustom"
 
 import { Button, Form, Col, Row } from "antd"
-import { RootStateOrAny, useSelector } from "react-redux"
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux"
 import {
     listSelectGender,
     listSelectLevel,
     listSelectStatus
 } from "@/modules/User/shared/constants"
+import { userDetailTypes } from "../../redux/reduces"
 
 const EditUser = () => {
+    const dispatch = useDispatch()
+
     const userDetailData = useSelector(
         (state: RootStateOrAny) => state.userDetail.dataUser.data
     )
@@ -40,15 +43,15 @@ const EditUser = () => {
         setDefaultValue({
             code: userDetailData?.code,
             full_name: userDetailData?.full_name,
-            gender: userDetailData?.level,
             email: userDetailData?.email,
             department_id: userDetailData?.department.id,
             position_id: userDetailData?.position.id,
             level: userDetailData?.level,
             start_date: userDetailData?.start_date,
-            officialStartDay: userDetailData?.official_start_date,
-            status: userDetailData?.status,
-            date_off: userDetailData?.date_off
+            date_off: userDetailData?.date_off,
+            gender: userDetailData?.level,
+            official_start_date: userDetailData?.official_start_date,
+            status: userDetailData?.status
         })
     }, [userDetailData])
 
@@ -96,14 +99,22 @@ const EditUser = () => {
         const newSubmit = {
             ...submit,
             start_date: moment(submit.start_date).format("YYYY-MM-DD"),
-            officialStartDay: submit.officialStartDay
-                ? submit.officialStartDay.format("YYYY-MM-DD")
+            official_start_date: submit.official_start_date
+                ? submit.official_start_date.format("YYYY-MM-DD")
                 : null,
             date_off: submit.date_off
                 ? submit.date_off.format("YYYY-MM-DD")
                 : null
         }
         console.log("onFinish", newSubmit)
+
+        dispatch({
+            type: userDetailTypes.EDIT_USER,
+            payload: {
+                userId: userDetailData.id,
+                params: newSubmit
+            }
+        })
     }
 
     const [form] = Form.useForm()
@@ -211,7 +222,7 @@ const EditUser = () => {
                 <Col span={12}>
                     <Form.Item
                         label="Chính Thức"
-                        name="officialStartDay"
+                        name="official_start_date"
                         className="label-r"
                     >
                         <DatePickerCustom

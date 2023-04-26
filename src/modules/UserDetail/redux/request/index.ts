@@ -56,6 +56,34 @@ const userDetailRequest = {
                 message: "Đổi Mật Khẩu Thất Bại"
             })
         }
+    },
+    *editUser({ payload }) {
+        try {
+            const res: IResponseApi = yield call<any>(
+                userDetailService.putEditUser,
+                payload
+            )
+
+            const { status } = res
+            if (status === statusCode.ok) {
+                yield put({
+                    type: popupTypes.HIDDEN_POPUP
+                })
+                yield NotificationCustom({
+                    type: typeNotification.success,
+                    message: "Cập Nhật Thành Công"
+                })
+
+                return
+            }
+
+            throw new Error()
+        } catch (e) {
+            NotificationCustom({
+                type: typeNotification.error,
+                message: "Cập Nhật Thất Bại"
+            })
+        }
     }
 }
 

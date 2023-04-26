@@ -134,6 +134,19 @@ const User = () => {
         })
     }
 
+    const searchKeyWord = search => {
+        dispatch({
+            type: listUserTypes.GET_LIST_USER,
+            payload: {
+                status: checkTagsUser(
+                    getQueryLocation("tab") || keyUserTab.All
+                ),
+                search: search,
+                pageIndex: 1
+            }
+        })
+    }
+
     const checkTagsValue = (value: string) => {
         const values = Object.values(keyUserTab)
         for (let i = 0; i < values.length; i++) {
@@ -144,9 +157,6 @@ const User = () => {
         return values[0]
     }
 
-    const handleChange = (value: string[]) => {
-        console.log(`selected ${value}`)
-    }
     const showAddUser = () => {
         document.getElementById("user")?.classList.toggle("active")
         document.getElementById("btn-add")?.classList.toggle("active")
@@ -156,7 +166,6 @@ const User = () => {
         document.getElementById("user")?.classList.remove("active")
         document.getElementById("btn-add")?.classList.remove("active")
     }
-    // const listSelectDepartment = useMemo(() => {})
 
     const checkTagsUser = useCallback((status: string) => {
         switch (status) {
@@ -263,6 +272,7 @@ const User = () => {
                         <InputCustom
                             typeInput="search"
                             placeholder="Tìm kiếm"
+                            onSearch={e => searchKeyWord(e)}
                         />
                         <Button
                             className="btn-filter"
@@ -298,6 +308,7 @@ const User = () => {
                     <div className="input-search input-search-cus">
                         <InputCustom
                             typeInput="search"
+                            onSearch={e => searchKeyWord(e)}
                             placeholder="Tìm kiếm"
                         />
                         <Button
@@ -332,6 +343,7 @@ const User = () => {
                     <div className="input-search input-search-cus">
                         <InputCustom
                             typeInput="search"
+                            onSearch={e => searchKeyWord(e)}
                             placeholder="Tìm kiếm"
                         />
                         <Button
@@ -366,6 +378,7 @@ const User = () => {
                     <div className="input-search input-search-cus">
                         <InputCustom
                             typeInput="search"
+                            onSearch={e => searchKeyWord(e)}
                             placeholder="Tìm kiếm"
                         />
                         <Button
@@ -468,7 +481,7 @@ const User = () => {
                                         "waiting",
                                         "retired"
                                     ]}
-                                    onChange={handleChange}
+                                    // onChange={handleChange}
                                     optionLabelProp="label"
                                 >
                                     <Option
@@ -544,8 +557,8 @@ const User = () => {
                             type="primary"
                             htmlType="submit"
                             className="btn-submit"
-                            onClick={() => {
-                                console.log("tuandz")
+                            onClick={e => {
+                                console.log("tuandz", e)
                             }}
                         >
                             Tìm kiếm

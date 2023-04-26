@@ -10,5 +10,6 @@ export const userDetailSaga = [
     takeLatest(
         userDetailTypes.CHANGE_PASSWORD,
         userDetailRequest.changePassword
-    )
+    ),
+    takeLatest(userDetailTypes.EDIT_USER, userDetailRequest.editUser)
 ]

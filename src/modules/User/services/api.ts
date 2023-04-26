@@ -3,8 +3,10 @@ import { ITypeParamsGetListUser } from "../shared/typings/user-type"
 
 const UserService = {
     getListUser(payload: ITypeParamsGetListUser) {
-        const { status, pageIndex } = payload
-        let url = `api/users?status=${status}&page=${pageIndex}`
+        const { status, pageIndex, search } = payload
+        let url = `api/users?status=${status}&keyword=${
+            search || ""
+        }&page=${pageIndex}`
         return apiServices.get(url)
     },
     getListCount() {

@@ -97,6 +97,7 @@ type ITypeListPopup = {
     popupCreateUser: string
     popupChangePassword: string
     popupEditUserDetail: string
+    popupFilter: string
 }
 
 type ITypePermissionRouteUser = {
