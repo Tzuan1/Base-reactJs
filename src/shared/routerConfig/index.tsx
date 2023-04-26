@@ -20,6 +20,7 @@ const Projects = lazy(() => import("@/modules/Projects"))
 const User = lazy(() => import("@/modules/User"))
 const UserDetail = lazy(() => import("@/modules/UserDetail"))
 const Customer = lazy(() => import("@/modules/Customer"))
+const CustomerDetail = lazy(() => import("@/modules/CustomerDetail"))
 
 const routerDefine: IRouter[] = [
     {
@@ -68,6 +69,14 @@ const routerDefine: IRouter[] = [
         sideMenu: true,
         title: "Khách Hàng",
         logo: logoCustomer
+    },
+    {
+        path: PATH_ROUTES.CUSTOMER_DETAIL,
+        exact: true,
+        component: CustomerDetail,
+        isAuth: false,
+        layout: Layout,
+        sideMenu: false
     },
     {
         path: PATH_ROUTES.LOGIN,

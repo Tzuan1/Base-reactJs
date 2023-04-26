@@ -1,0 +1,59 @@
+@import "@/assets/styles/variables";
+.dashboard {
+    :global {
+        .ant-card-body {
+            padding: 10px 24px;
+            .card-cus {
+                .ant-card-body {
+                    padding: 20px 24px;
+                    img {
+                        width: 36px;
+                    }
+                    .name {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+        .card-cus {
+            border-radius: 16px;
+            font-size: 16px;
+            color: $dark;
+            font-weight: 500;
+            border: 0;
+            height: 100%;
+            &.red {
+                background-color: #ffe2e5;
+            }
+            &.orange {
+                background-color: #fff4de;
+            }
+            &.green {
+                background-color: #dcfce7;
+            }
+            &.purple {
+                background-color: #f3e8ff;
+            }
+            .title {
+                font-weight: 600;
+                font-size: 22px;
+                color: $dark;
+                display: block;
+                margin-top: 10px;
+            }
+            .name {
+                margin-bottom: 10px;
+                font-size: 15px;
+            }
+            .date {
+                color: #4079ed;
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+        .chart-cus {
+            width: auto !important;
+            margin-top: 25px;
+        }
+    }
+}

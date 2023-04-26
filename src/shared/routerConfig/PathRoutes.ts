@@ -8,5 +8,6 @@ export const PATH_ROUTES = {
     PROJECTS: "/projects",
     USER: "/user",
     USER_DETAIL: "/user/:id",
-    CUSTOMER: "/customer"
+    CUSTOMER: "/customer",
+    CUSTOMER_DETAIL: "/customer-detail"
 }
