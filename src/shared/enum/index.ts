@@ -7,7 +7,8 @@ enum ListNamePopup {
     popupCreateUser = "popupCreateUser",
     popupCreateCustomer = "popupCreateCustomer",
     popupChangePassword = "popupChangePassword",
-    popupEditUserDetail = "popupEditUserDetail"
+    popupEditUserDetail = "popupEditUserDetail",
+    popupCreateCustomer = "popupCreateCustomer"
 }
 
 export { KeyCookie, ListNamePopup }
