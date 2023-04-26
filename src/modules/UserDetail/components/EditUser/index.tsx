@@ -103,7 +103,7 @@ const EditUser = () => {
                 ? submit.date_off.format("YYYY-MM-DD")
                 : null
         }
-        console.log(newSubmit)
+        console.log("onFinish", newSubmit)
     }
 
     const [form] = Form.useForm()
