@@ -1,6 +1,7 @@
 type ITypeParamsGetListUser = {
     status?: number
     pageIndex?: number
+    search?: string
 }
 
 type IInitialUserReducer = {

@@ -421,6 +421,19 @@ const getColorStatus = (status: string) => {
     }
 }
 
+const checkGenderUser = (id: number) => {
+    switch (id) {
+        case 1:
+            return "Male"
+        case 2:
+            return "Female"
+        case 3:
+            return "Other"
+        default:
+            return "Other"
+    }
+}
+
 export {
     autoTrimDebounceInput,
     clearFormatMoney,
@@ -452,5 +465,6 @@ export {
     getQueryLocation,
     checkLevelUser,
     checkStatusUser,
-    getColorStatus
+    getColorStatus,
+    checkGenderUser
 }

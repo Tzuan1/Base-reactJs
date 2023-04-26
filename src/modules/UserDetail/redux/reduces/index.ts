@@ -7,7 +7,8 @@ const { Types, Creators } = createActions({
     userDetailSuccess: ["payload"],
     userDetailError: ["payload"],
     getUserDetail: ["payload"],
-    changePassword: ["payload"]
+    changePassword: ["payload"],
+    editUser: ["payload"]
 })
 
 export const userDetailTypes: any = Types
@@ -43,9 +44,14 @@ const postPasswordRequest = (state = INITIAL_STATE) => {
     return state
 }
 
+const putEditUserRequest = (state = INITIAL_STATE) => {
+    return state
+}
+
 export const userDetailReducer = createReducer(INITIAL_STATE, {
     [Types.USER_DETAIL_ERROR]: userDetailError,
     [Types.USER_DETAIL_SUCCESS]: userDetailSuccess,
     [Types.GET_USER_DETAIL]: userDetailRequest,
-    [Types.CHANGE_PASSWORD]: postPasswordRequest
+    [Types.CHANGE_PASSWORD]: postPasswordRequest,
+    [Types.EDIT_USER]: putEditUserRequest
 })

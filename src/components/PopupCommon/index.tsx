@@ -10,6 +10,7 @@ import CreateUser from "@/modules/User/components/CreateUser"
 import CreateCustomer from "@/modules/Customer/components/CreateCustomer"
 import ChangePassword from "@/modules/UserDetail/components/ChangePassword"
 import EditUser from "@/modules/UserDetail/components/EditUser"
+import SearchFilter from "@/modules/User/components/Filters"
 
 const PopupCommon = () => {
     const dispatch = useDispatch()
@@ -35,6 +36,9 @@ const PopupCommon = () => {
         }
         if (typePopup === ListNamePopup.popupEditUserDetail) {
             return <EditUser />
+        }
+        if (typePopup === ListNamePopup.popupFilter) {
+            return <SearchFilter />
         }
         return ""
     }

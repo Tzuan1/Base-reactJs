@@ -300,7 +300,8 @@ const listNamePopup: ITypeListPopup = {
     popupClassReportDetail: "popupClassReportDetail",
     popupCreateUser: "popupCreateUser",
     popupChangePassword: "popupChangePassword",
-    popupEditUserDetail: "popupEditUserDetail"
+    popupEditUserDetail: "popupEditUserDetail",
+    popupFilter: "popupFilter"
 }
 
 const roleAccount: ITypeRoleUser = {

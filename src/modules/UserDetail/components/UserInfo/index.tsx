@@ -6,6 +6,7 @@ import styles from "./index.module.scss"
 import IconEdit from "@/assets/icons/edit.png"
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux"
 import {
+    checkGenderUser,
     checkLevelUser,
     checkStatusUser,
     getColorStatus
@@ -85,7 +86,7 @@ const UserInfo = () => {
                     </Col>
                     <Col span={12} className="mb">
                         <h4 className="label">Giới Tính</h4>
-                        {userDetailData?.code}
+                        {checkGenderUser(userDetailData?.gender)}
                     </Col>
                     <Col span={12} className="mb">
                         <h4 className="label">Vị Trí</h4>

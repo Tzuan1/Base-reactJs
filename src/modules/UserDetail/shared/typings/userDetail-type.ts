@@ -12,8 +12,14 @@ type ITypeParamsPassword = {
     confirm_password?: string
 }
 
+type ITypeParamsEditUser = {
+    userId?: number
+    params?: {}
+}
+
 export type {
     IInitialUserDetailReducer,
     ITypeParamsGetUser,
-    ITypeParamsPassword
+    ITypeParamsPassword,
+    ITypeParamsEditUser
 }
