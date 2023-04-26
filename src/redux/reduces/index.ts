@@ -8,6 +8,7 @@ import {
     listDepartmentReducer
 } from "@/components/Layout/redux/reduces"
 import { listUserReducer } from "@/modules/User/redux/reduces"
+import { userDetailReducer } from "@/modules/UserDetail/redux/reduces"
 
 export const rootReducer = (history: History) =>
     combineReducers({
@@ -16,5 +17,6 @@ export const rootReducer = (history: History) =>
         tuition: tuitionCalendarReducer,
         layoutGlobal: layoutTitleReducer,
         listUser: listUserReducer,
-        departmentAndPosition: listDepartmentReducer
+        departmentAndPosition: listDepartmentReducer,
+        userDetail: userDetailReducer
     })
