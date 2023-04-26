@@ -103,7 +103,7 @@ const Customer = () => {
     return (
         <div className={styles.customer}>
             <div className="container-head">
-                <Button className="btn-import">Import CSV</Button>
+                <Button className="btn-import btn-hover">Import CSV</Button>
                 <div className="input-search input-search-cus">
                     <InputCustom typeInput="search" placeholder="Tìm kiếm" />
                     <Button className="btn-filter">
