@@ -11,8 +11,6 @@ import CreateCustomer from "@/modules/Customer/components/CreateCustomer"
 import ChangePassword from "@/modules/UserDetail/components/ChangePassword"
 import EditUser from "@/modules/UserDetail/components/EditUser"
 import CreateCustomer from "@/modules/Customer/components/CreateCustomer"
-import ChangePassword from "@/modules/UserDetail/components/ChangePassword"
-import EditUser from "@/modules/UserDetail/components/EditUser"
 
 const PopupCommon = () => {
     const dispatch = useDispatch()
