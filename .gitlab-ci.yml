@@ -1,4 +1,5 @@
 stages:
+    - test
     - build
     - deploy
 
@@ -6,17 +7,17 @@ cache:
     paths:
         - node_modules/
 
-build-pages:
-    stage: build
-    image: node:16.14.2
+lint:
+    stage: test
+    image: node:16-alpine3.14
     only:
-        - merge_requests
+        refs:
+            - merge_requests
+        variables:
+            - $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop"
     script:
-        - echo "Start building App"
-        - rm -rf build
-        - CI=false npm install
-        - CI=false npm run build
-        - echo "Build Susccess"
+        - npm install
+        - npm run prettier && npm run lint
 
 develop:
     stage: deploy
@@ -33,12 +34,9 @@ develop:
         - ssh-keyscan -H $SSH_SERVER_IP >> ~/.ssh/known_hosts
         - chmod 600 ~/.ssh/known_hosts
     script:
-        - rm -rf build && rm -rf .env
-        - echo "$TEST_ENV" > .env
-        - npm install -g npm@latest
+        - git pull origin develop
         - npm install
-        - npm run build
-        - rsync -avzhe ssh ./build $SSH_SERVER_USER@$SSH_SERVER_IP:$PATH_TO_PROJECT
+        - docker-compose -f docker-compose-test.yml up -d --build
 
 build-staging:
     stage: build
